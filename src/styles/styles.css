@@ -1,16 +1,89 @@
-.form {
-  margin: 25px;
-  padding: 25px;
-  border: 1px solid #ddd;
-  background-color: #eaeaea;
-  border-radius: 10px;
+.news-manager {
+	width: 629px;
+	height: 86px;
+	font-family: Montserrat-ExtraBold;
+	font-size: 70px;
+	font-weight: 800;
+	color: #e1e1e1;
+  margin: 0 auto;
+  text-align: center;
 }
-
-.form div {
-  padding-top: 25px;
+.placeholder-origin-f {
+	width: 416px;
+	height: 19px;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: 800;
+	color: #aab8c2;
+  margin: 0 auto;
+  text-align: center;
 }
-
-.image-container {
-  display: flex;
-  justify-content: center;
+.add {
+	width: 51px;
+	height: 51px;
+}
+.add-btn {
+  text-align: center;
+  margin-top: 50px;
+  cursor: pointer;
+}
+.new-article {
+	width: 117px;
+	height: 19px;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: 800;
+	color: #ca1323;
+  margin: 0 auto;
+}
+.rectangle-388-copy-8 {
+	width: 100%;
+	height: 38px;
+	border-radius: 30px;
+	background-color: #ffffff;
+	border: solid 0.8px #cdd1d9;
+}
+.rectangle-388-copy-6 {
+	width: 100%;
+	height: 38px;
+	border-radius: 30px;
+	background-color: #ffffff;
+	border: solid 0.8px #cdd1d9;
+}
+.article-title {
+	height: 13px;
+	font-family: Montserrat;
+	font-size: 12px;
+	font-weight: 800;
+	color: #ca1323;
+  padding: 15px;
+  margin-bottom: 5px;
+}
+.add-content {
+	width: 122px;
+	height: 19px;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: 800;
+	color: #aab8c2;
+  margin: 0 auto;
+}
+.layout-style {
+  margin: 15px;
+  width: 100%;
+  height: 100px;
+}
+.choose-your-layout-s {
+	height: 22px;
+	font-family: Montserrat;
+	font-size: 18px;
+	text-align: center;
+	color: #343441;
+  text-align: center;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+input {
+  padding-left: 20px;
 }

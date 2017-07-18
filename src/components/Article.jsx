@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Template from './Template.jsx';
+import Layout from './Layout.jsx';
+import { Grid, Col, Row } from 'react-bootstrap';
 
 class Article extends Component {
   constructor() {
@@ -15,13 +16,27 @@ class Article extends Component {
   render() {
     return (
       <div>
-        <input type="text"/>
-        <input type="text"/>
-        <input type="text"/>
-        { this.state.step === 1 ? <Template /> : null }
-        <div className='btn btn-secondary d-block' onClick={() => this.onClick()}>
-          add content +
+        <Grid>
+          <Row>
+            <Col><div className='article-title'>Article Title</div></Col>
+            <Col><input className='rectangle-388-copy-8' type='text'/></Col>
+          </Row>
+          <Row>
+            <Col>
+              <Col xs={6}><div className='article-title'>Slug</div></Col>
+              <Col xs={6}><div className='article-title'>Featured Image</div></Col>
+            </Col>
+            <Col>
+              <Col xs={6}><input className='rectangle-388-copy-6' type='text'/></Col>
+              <Col xs={6}><input className='rectangle-388-copy-6' type='text'/></Col>
+            </Col>
+          </Row>
+        </Grid>
+        { this.state.step === 1 ? <Layout /> : null }
+        <div className='add-btn' onClick={() => this.onClick()}>
+          <img className='add' src='../images/plus-grey.png'/>
         </div>
+        <p className='add-content'>NEW CONTENT</p>
       </div>
     );
   }

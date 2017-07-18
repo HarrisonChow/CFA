@@ -24,7 +24,7 @@ var config = {
         loader: "style-loader!css-loader"
       },
       {
-        test: /\.gif$/,
+        test: /\.(png|jpg|gif)$/,
         loaders: [
           'file-loader?name=[path][name].[ext]',
           'image-webpack-loader',
