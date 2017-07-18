@@ -18,7 +18,7 @@ class Home extends Component {
     return (
       <div>
         { this.state.step === 0 ?
-          <div className='container'>
+          <div className='home'>
             <div className='news-manager'>NEWS MANAGER</div>
             <p className='placeholder-origin-f'>Placeholder origin for creating new News Articles</p>
             <div className='add-btn' onClick={() => this.onClick()}>

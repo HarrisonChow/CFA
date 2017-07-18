@@ -32,11 +32,16 @@ class Article extends Component {
             </Col>
           </Row>
         </Grid>
+        { this.state.step === 0 ?
+          <div className='bottom-block'>
+            <div className='add-btn' onClick={() => this.onClick()}>
+              <img className='add' src='../images/plus-grey.png'/>
+            </div>
+            <p className='add-content'>NEW CONTENT</p>
+          </div>
+        : null }
         { this.state.step === 1 ? <Layout /> : null }
-        <div className='add-btn' onClick={() => this.onClick()}>
-          <img className='add' src='../images/plus-grey.png'/>
-        </div>
-        <p className='add-content'>NEW CONTENT</p>
+
       </div>
     );
   }
