@@ -1,0 +1,16 @@
+.form {
+  margin: 25px;
+  padding: 25px;
+  border: 1px solid #ddd;
+  background-color: #eaeaea;
+  border-radius: 10px;
+}
+
+.form div {
+  padding-top: 25px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+}
