@@ -5,14 +5,11 @@ import { Grid, Col, Row } from 'react-bootstrap';
 class Article extends Component {
   constructor() {
     super();
+    this.removeContent = this.removeContent.bind(this);
     this.state = {
-      step: 0,
       id: 1,
       count:0
     };
-  }
-  onClick() {
-    this.setState({step: 1})
   }
   addContent(){
     this.setState(
@@ -20,17 +17,22 @@ class Article extends Component {
       count: this.state.count + 1
     });
   }
+  removeContent(){
+    this.setState(
+    {
+      count: this.state.count - 1
+    });
+  }
   renderRemainders() {
     let articles = []
     let total = this.state.count
     for (let i = 0; i < total; i++){
-      articles.push( <Layout key={i} id={this.state.count}/> )
+      articles.push( <Layout removeContent={this.removeContent} key={i} id={this.state.count}/> )
     }
     return articles
   }
 
   render() {
-  console.log(this.state);
     return (
       <div>
         <Grid>
@@ -58,7 +60,6 @@ class Article extends Component {
           </div>
           <p className='add-content'>NEW CONTENT</p>
         </div>
-
       </div>
     );
   }

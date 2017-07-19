@@ -6,7 +6,6 @@ class Layout extends Component {
   constructor() {
     super();
     this.state = {
-      step:0,
       choosen: [],
       layouts:[]
     };
@@ -61,8 +60,7 @@ class Layout extends Component {
             </Grid>
           </div>
         </div>}
-
-        { this.state.choosen.title !== '' && <Section data={this.state.choosen}/> }
+        { this.state.choosen.title !== '' && <Section removeContent={this.props.removeContent} data={{choosen:this.state.choosen, id:this.props.id}}/> }
       </div>
     );
   }

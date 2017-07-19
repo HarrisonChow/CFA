@@ -6,17 +6,17 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      step: 0,
+      show: false,
     };
   }
   onClick() {
-    this.setState({step: 1});
+    this.setState({show: true});
   }
 
   render() {
     return (
       <div>
-        { this.state.step === 0 &&
+        { this.state.show == false &&
           <div className='home'>
             <div className='news-manager'>NEWS MANAGER</div>
             <p className='placeholder-origin-f'>Placeholder origin for creating new News Articles</p>
@@ -25,7 +25,7 @@ class Home extends Component {
             </div>
             <p className='new-article'>NEW ARTICLE</p>
           </div> }
-        { this.state.step === 1 && <Article /> }
+        { this.state.show && <Article /> }
       </div>
     );
   }
