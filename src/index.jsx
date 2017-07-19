@@ -4,11 +4,11 @@ import Home from './components/Home.jsx';
 
 require('./styles/styles.css');
 require('./styles/animation.css');
-require('./styles/cfaiconlibrary-codes.css');
-require('./styles/cfaiconlibrary-embedded.css');
-require('./styles/cfaiconlibrary-ie7-codes.css');
-require('./styles/cfaiconlibrary-ie7.css');
-require('./styles/cfaiconlibrary.css');
+require('./styles/cfg-icon-library-codes.css');
+require('./styles/cfg-icon-library-embedded.css');
+require('./styles/cfg-icon-library-ie7-codes.css');
+require('./styles/cfg-icon-library-ie7.css');
+require('./styles/cfg-icon-library.css');
 require('./images/placeholder.gif');
 require('./images/plus.png');
 require('./images/plus-grey.png');

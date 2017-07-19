@@ -7,14 +7,30 @@ class Article extends Component {
     super();
     this.state = {
       step: 0,
-      count: 0
+      id: 1,
+      count:0
     };
   }
   onClick() {
-    this.setState({step: 1});
+    this.setState({step: 1})
+  }
+  addContent(){
+    this.setState(
+    {
+      count: this.state.count + 1
+    });
+  }
+  renderRemainders() {
+    let articles = []
+    let total = this.state.count
+    for (let i = 0; i < total; i++){
+      articles.push( <Layout key={i} id={this.state.count}/> )
+    }
+    return articles
   }
 
   render() {
+  console.log(this.state);
     return (
       <div>
         <Grid>
@@ -35,10 +51,9 @@ class Article extends Component {
             </Col>
           </Row>
         </Grid>
-        { this.state.step === 1 && <Layout /> }
-
+        { this.state.count !== 0 && this.renderRemainders() }
         <div className='bottom-block'>
-          <div className='add-btn' onClick={() => this.onClick()}>
+          <div className='add-btn' onClick={() => this.addContent()}>
             <i className='demo-icon icon-add add'></i>
           </div>
           <p className='add-content'>NEW CONTENT</p>

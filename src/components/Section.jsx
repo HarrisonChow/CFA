@@ -33,12 +33,14 @@ class Section extends Component {
               <Col><div className='article-title'>Content</div></Col>
               <Col><textarea className='section-content' type='text'/></Col>
             </Row>
+            {this.props.data.uploaded &&
+            <Row>
+              <Col><div className='article-title'>Content</div></Col>
+              <Col><input className='rectangle-388-copy-8' type='file'/></Col>
+            </Row>}
+
           </Grid>
         </div>
-        <div className='add-btn' onClick={() => this.onClick()}>
-          <img className='add' src='../images/plus-grey.png'/>
-        </div>
-        <p className='add-content'>NEW CONTENT</p>
       </div>
     );
   }
