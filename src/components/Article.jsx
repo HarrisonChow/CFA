@@ -7,6 +7,7 @@ class Article extends Component {
     super();
     this.state = {
       step: 0,
+      count: 0
     };
   }
   onClick() {
@@ -28,19 +29,20 @@ class Article extends Component {
             </Col>
             <Col>
               <Col xs={6}><input className='rectangle-388-copy-6' type='text'/></Col>
-              <Col xs={6}><input className='rectangle-388-copy-6' type='text'/></Col>
+              <Col xs={6}>
+                <input className='rectangle-388-copy-6' type='file'/>
+              </Col>
             </Col>
           </Row>
         </Grid>
-        { this.state.step === 0 ?
-          <div className='bottom-block'>
-            <div className='add-btn' onClick={() => this.onClick()}>
-              <img className='add' src='../images/plus-grey.png'/>
-            </div>
-            <p className='add-content'>NEW CONTENT</p>
+        { this.state.step === 1 && <Layout /> }
+
+        <div className='bottom-block'>
+          <div className='add-btn' onClick={() => this.onClick()}>
+            <i className='demo-icon icon-add add'></i>
           </div>
-        : null }
-        { this.state.step === 1 ? <Layout /> : null }
+          <p className='add-content'>NEW CONTENT</p>
+        </div>
 
       </div>
     );

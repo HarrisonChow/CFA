@@ -6,47 +6,48 @@ class Layout extends Component {
   constructor() {
     super();
     this.state = {
-      step: 0,
+      choosen: [ title:'', uploaded:false ],
+      layouts: [
+        { title: 'demo-icon icon-imagefull', uploaded: true },
+        { title: 'demo-icon icon-imageleft', uploaded: true },
+        { title: 'demo-icon icon-imageright', uploaded: true },
+        { title: 'demo-icon icon-title\+text', uploaded: true },
+        { title: 'demo-icon Image(s)', uploaded: false },
+        { title: 'others', uploaded: false },
+      ]
     };
   }
-  onClick() {
-    this.setState({step: 1});
+
+  chooseLayout(x, y) {
+    console.log(x);
+    console.log(y);
   }
+
   render() {
     return (
       <div>
-        { this.state.step === 0 ?
+        { this.state.step === 0 &&
         <div>
           <div className='layout-block'>
             <Grid>
               <Row>
                 <Col className='choose-your-layout-s'>Choose your layout style</Col>
-                <Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
-                </Col>
-                <Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
-                  <Col xs={2}><img src='../images/placeholder.gif' className='layout-style'/></Col>
+              </Row>
+              <Row>
+                <Col className='layoutlist'>
+                  {this.state.layouts.map((item,index) => (
+                    <Col key={ index } xs={2}>
+                      <div className='layout-icon-style' >
+                        { item.title == 'demo-icon icon-title\+text' ? <i className={item.title}>&#xe804;</i> : <i className={item.title}>&nbsp;</i> }
+                      </div>
+                    </Col>
+                  ))}
                 </Col>
               </Row>
             </Grid>
           </div>
-          <div className='add-btn' onClick={() => this.onClick()}>
-            <img className='add' src='../images/plus-grey.png'/>
-          </div>
-          <p className='add-content'>NEW CONTENT</p>
-        </div>
-        : null }
-        { this.state.step === 1 ? <Section /> : null }
+        </div>}
+        { this.state.step === 1 && <Section up={this.state.layouts}/> }
       </div>
     );
   }

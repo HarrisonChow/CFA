@@ -30,6 +30,7 @@ var config = {
           'image-webpack-loader',
         ]
       },
+      { test: /\.(woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
       { test: /\.(html)$/,
         loader: "file-loader?name=[path][name].[ext]"
       }

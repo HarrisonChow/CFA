@@ -14,20 +14,18 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state.step);
     return (
       <div>
-        { this.state.step === 0 ?
+        { this.state.step === 0 &&
           <div className='home'>
             <div className='news-manager'>NEWS MANAGER</div>
             <p className='placeholder-origin-f'>Placeholder origin for creating new News Articles</p>
             <div className='add-btn' onClick={() => this.onClick()}>
-              <img className='add' src='../images/plus.png'/>
+              <i className="demo-icon icon-add homeadd"></i>
             </div>
             <p className='new-article'>NEW ARTICLE</p>
-          </div>
-        : null }
-        { this.state.step === 1 ? <Article /> : null }
+          </div> }
+        { this.state.step === 1 && <Article /> }
       </div>
     );
   }
