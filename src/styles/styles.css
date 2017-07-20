@@ -9,7 +9,7 @@ html,body{
   background-color: #fff;
   width: 100%;
   padding-bottom: 15px;
-  padding: 15px 150px;
+  padding: 2%;
 }
 .news-manager {
   margin: 0 auto;
@@ -49,16 +49,10 @@ html,body{
 	color: #ca1323;
   margin: 0 auto;
 }
-.rectangle-388-copy-8 {
+.input-style {
 	width: 100%;
 	height: 38px;
-	border-radius: 30px;
-	background-color: #ffffff;
-	border: solid 0.8px #cdd1d9;
-}
-.rectangle-388-copy-6 {
-	width: 100%;
-	height: 38px;
+  padding-left: 2%;
 	border-radius: 30px;
 	background-color: #ffffff;
 	border: solid 0.8px #cdd1d9;
@@ -98,7 +92,7 @@ textarea:focus, input:focus{
     outline: none;
 }
 input {
-  padding-left: 20px;
+  padding-left: 2%;
 }
 .layout-block, .section-block {
   /*margin-top: 25px;*/
@@ -148,9 +142,84 @@ input[type=file] {
   margin: 25px 40px;
 }
 .layout-icon-style {
+  margin: 10px;
   cursor: pointer;
 	height: 90px;
 	border-radius: 5px;
 	background-color: #fafafa;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+
+/* layout icon style*/
+.calltoaction {
+  background: url('../images/CallToAction.svg');
+}
+.facebook {
+  background: url('../images/Facebook.svg');
+}
+.grid {
+  background: url('../images/Grid.svg');
+}
+.imagefull {
+  background: url('../images/Imagefull.svg');
+}
+.imageleft {
+  background: url('../images/Imageleft.svg');
+}
+.imageright {
+  background: url('../images/Imageright.svg');
+}
+.quote {
+  background: url('../images/Quote.svg');
+}
+.titletext {
+  background: url('../images/Title+Text.svg');
+}
+.twitter {
+  background: url('../images/Twitter.svg');
+}
+.twocolumn {
+  background: url('../images/Twocolumn.svg');
+}
+.calltoaction, .facebook, .grid, .imagefull, .imageleft, .imageright, .quote, .titletext, .twitter, .twocolumn {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 90px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/*upload file button styles */
+.custom-file-input {
+  position: absolute;
+  top:35px;
+  right:0;
+  width: 122px;
+  padding-right: 15px;
+}
+.custom-file-input input {
+	visibility: hidden;
+}
+.custom-file-input:before {
+	border-radius: 30px;
+	content: 'CHOOSE FILE';
+	display: block;
+	background: #aab8c2;
+	font-family: Montserrat;
+	font-size: 10px;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 12px 0px;
+	cursor: pointer;
+	text-align: center;
+}
+.custom-file-input:hover:before {
+	background: #e3e3e3;
+  border-radius: 30px;
+  color: #000000;
+  font-size: 10px;
+	font-weight: bold;
 }

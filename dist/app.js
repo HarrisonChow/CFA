@@ -30881,7 +30881,7 @@ var Article = function (_Component) {
             _react2.default.createElement(
               _reactBootstrap.Col,
               null,
-              _react2.default.createElement('input', { className: 'rectangle-388-copy-8', type: 'text' })
+              _react2.default.createElement('input', { className: 'input-style', type: 'text' })
             )
           ),
           _react2.default.createElement(
@@ -30915,12 +30915,12 @@ var Article = function (_Component) {
               _react2.default.createElement(
                 _reactBootstrap.Col,
                 { xs: 6 },
-                _react2.default.createElement('input', { className: 'rectangle-388-copy-6', type: 'text' })
+                _react2.default.createElement('input', { className: 'input-style', type: 'text' })
               ),
               _react2.default.createElement(
                 _reactBootstrap.Col,
                 { xs: 6 },
-                _react2.default.createElement('input', { className: 'rectangle-388-copy-6', type: 'file' })
+                _react2.default.createElement('input', { className: 'input-style', type: 'file' })
               )
             )
           )
@@ -31173,7 +31173,7 @@ var Section = function (_Component) {
               _react2.default.createElement(
                 _reactBootstrap.Col,
                 null,
-                _react2.default.createElement('input', { className: 'rectangle-388-copy-8', type: 'text' })
+                _react2.default.createElement('input', { className: 'input-style', type: 'text' })
               )
             ),
             _react2.default.createElement(
@@ -42105,7 +42105,7 @@ exports = module.exports = __webpack_require__(40)(undefined);
 
 
 // module
-exports.push([module.i, "html,body{\n  height: 100%;\n  background-color: #fafafa;\n}\n.home {\n  background-color: #fafafa;\n}\n.content, .container {\n  background-color: #fff;\n  width: 100%;\n  padding-bottom: 15px;\n  padding: 15px 150px;\n}\n.news-manager {\n  margin: 0 auto;\n  text-align: center;\n  width: 629px;\n\theight: 86px;\n\tfont-family: Montserrat;\n\tfont-size: 70px;\n\tfont-weight: 900;\n\tcolor: #e1e1e1;\n}\n.placeholder-origin-f {\n\twidth: 416px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #aab8c2;\n  margin: 0 auto;\n  text-align: center;\n}\n.add {\n\twidth: 51px;\n\theight: 51px;\n}\n.add-btn {\n  text-align: center;\n  margin-top: 50px;\n  cursor: pointer;\n}\n.new-article {\n\twidth: 117px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #ca1323;\n  margin: 0 auto;\n}\n.rectangle-388-copy-8 {\n\twidth: 100%;\n\theight: 38px;\n\tborder-radius: 30px;\n\tbackground-color: #ffffff;\n\tborder: solid 0.8px #cdd1d9;\n}\n.rectangle-388-copy-6 {\n\twidth: 100%;\n\theight: 38px;\n\tborder-radius: 30px;\n\tbackground-color: #ffffff;\n\tborder: solid 0.8px #cdd1d9;\n}\n.article-title {\n\theight: 13px;\n\tfont-family: Montserrat;\n\tfont-size: 12px;\n\tfont-weight: 800;\n\tcolor: #ca1323;\n  padding: 15px;\n  margin-bottom: 5px;\n}\n.add-content {\n\twidth: 122px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #aab8c2;\n  margin: 0 auto;\n}\n.layout-style {\n  margin: 15px;\n  width: 100%;\n  height: 100px;\n}\n.choose-your-layout-s {\n\theight: 22px;\n\tfont-family: Montserrat;\n\tfont-size: 18px;\n\ttext-align: center;\n\tcolor: #343441;\n  text-align: center;\n}\ntextarea:focus, input:focus{\n    outline: none;\n}\ninput {\n  padding-left: 20px;\n}\n.layout-block, .section-block {\n  /*margin-top: 25px;*/\n  padding-bottom: 25px;\n  padding-top: 25px;\n  background-color: #fff;\n  border-top: 1px solid #e3e3e3;\n  border-bottom: 1px solid #e3e3e3;\n}\n.section-content{\n  width: 100%;\n  height: 185.9px;\n\tborder-radius: 5px;\n\tborder: solid 0.8px #cdd1d9;\n}\n.section-title{\n  text-align: center;\n  display: flex;\n  align-items: center;\n}\n.delete-btn {\n  opacity: 0;\n  width: 149.6px;\n\theight: 32px;\n\tborder-radius: 30px;\n\tbackground-color: #aab8c2;\n  float: right;\n  font-family: Montserrat;\n  font-size: 10px;\n  font-weight: 900;\n  color: #ffffff;\n  padding-top: 10px;\n  transition: opacity .35s ease;\n}\n.section-block:hover .delete-btn {\n  opacity: 1;\n}\ninput[type=file]{\n  color:transparent;\n}\n", ""]);
+exports.push([module.i, "html,body{\n  height: 100%;\n  background-color: #fafafa;\n}\n.home {\n  background-color: #fafafa;\n}\n.content, .container {\n  background-color: #fff;\n  width: 100%;\n  padding-bottom: 15px;\n  padding: 15px 150px;\n}\n.news-manager {\n  margin: 0 auto;\n  text-align: center;\n  width: 629px;\n\theight: 86px;\n\tfont-family: Montserrat;\n\tfont-size: 70px;\n\tfont-weight: 900;\n\tcolor: #e1e1e1;\n}\n.placeholder-origin-f {\n\twidth: 416px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #aab8c2;\n  margin: 0 auto;\n  text-align: center;\n}\n.add {\n\twidth: 51px;\n\theight: 51px;\n}\n.add-btn {\n  text-align: center;\n  margin-top: 50px;\n  cursor: pointer;\n}\n.new-article {\n\twidth: 117px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #ca1323;\n  margin: 0 auto;\n}\n.input-style {\n\twidth: 100%;\n\theight: 38px;\n\tborder-radius: 30px;\n\tbackground-color: #ffffff;\n\tborder: solid 0.8px #cdd1d9;\n}\n.input-style {\n\twidth: 100%;\n\theight: 38px;\n\tborder-radius: 30px;\n\tbackground-color: #ffffff;\n\tborder: solid 0.8px #cdd1d9;\n}\n.article-title {\n\theight: 13px;\n\tfont-family: Montserrat;\n\tfont-size: 12px;\n\tfont-weight: 800;\n\tcolor: #ca1323;\n  padding: 15px;\n  margin-bottom: 5px;\n}\n.add-content {\n\twidth: 122px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #aab8c2;\n  margin: 0 auto;\n}\n.layout-style {\n  margin: 15px;\n  width: 100%;\n  height: 100px;\n}\n.choose-your-layout-s {\n\theight: 22px;\n\tfont-family: Montserrat;\n\tfont-size: 18px;\n\ttext-align: center;\n\tcolor: #343441;\n  text-align: center;\n}\ntextarea:focus, input:focus{\n    outline: none;\n}\ninput {\n  padding-left: 20px;\n}\n.layout-block, .section-block {\n  /*margin-top: 25px;*/\n  padding-bottom: 25px;\n  padding-top: 25px;\n  background-color: #fff;\n  border-top: 1px solid #e3e3e3;\n  border-bottom: 1px solid #e3e3e3;\n}\n.section-content{\n  width: 100%;\n  height: 185.9px;\n\tborder-radius: 5px;\n\tborder: solid 0.8px #cdd1d9;\n}\n.section-title{\n  text-align: center;\n  display: flex;\n  align-items: center;\n}\n.delete-btn {\n  opacity: 0;\n  width: 149.6px;\n\theight: 32px;\n\tborder-radius: 30px;\n\tbackground-color: #aab8c2;\n  float: right;\n  font-family: Montserrat;\n  font-size: 10px;\n  font-weight: 900;\n  color: #ffffff;\n  padding-top: 10px;\n  transition: opacity .35s ease;\n}\n.section-block:hover .delete-btn {\n  opacity: 1;\n}\ninput[type=file]{\n  color:transparent;\n}\n", ""]);
 
 // exports
 

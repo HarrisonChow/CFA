@@ -7,30 +7,30 @@ class Layout extends Component {
     super();
     this.state = {
       choosen: [],
-      layouts:[]
+      layouts:[],
     };
   }
 
   chooseLayout(x, y) {
     this.setState({
-      choosen:{title: x,uploaded: y}
-    });
+      choosen:{title: x,uploaded: y},
+    })
   }
 
   componentWillMount(){
     this.setState(
     {
       layouts: [
-        { title: 'demo-icon icon-calltoaction', uploaded: false },
-        { title: 'demo-icon icon-facebook', uploaded: false },
-        { title: 'demo-icon icon-grid', uploaded: true },
-        { title: 'demo-icon icon-imagefull', uploaded: true },
-        { title: 'demo-icon icon-imageleft', uploaded: true },
-        { title: 'demo-icon icon-imageright', uploaded: true },
-        { title: 'demo-icon icon-quote', uploaded: false },
-        { title: 'demo-icon icon-title+text', uploaded: false },
-        { title: 'demo-icon icon-twitter', uploaded: true },
-        { title: 'demo-icon icon-twocolumn', uploaded: false },
+        { title: 'demo-icon icon-calltoaction', cls:'calltoaction', uploaded: false },
+        { title: 'demo-icon icon-facebook', cls:'facebook', uploaded: false },
+        { title: 'demo-icon icon-grid', cls:'grid', uploaded: true },
+        { title: 'demo-icon icon-imagefull', cls:'imagefull', uploaded: true },
+        { title: 'demo-icon icon-imageleft', cls:'imageleft', uploaded: true },
+        { title: 'demo-icon icon-imageright', cls:'imageright', uploaded: true },
+        { title: 'demo-icon icon-quote', cls:'quote', uploaded: false },
+        { title: 'demo-icon icon-title+text', cls:'titletext', uploaded: false },
+        { title: 'demo-icon icon-twitter', cls:'twitter', uploaded: true },
+        { title: 'demo-icon icon-twocolumn', cls:'twocolumn', uploaded: false },
       ],
       choosen: {title:'', uploaded:false},
     });
@@ -48,15 +48,21 @@ class Layout extends Component {
               </Row>
               <Row>
                 <Col className='layoutlist'>
-                  {this.state.layouts.map((item,index) => (
-                    <Col key={ index } xs={2}>
+                  {this.state.layouts.map((item,index) => {
+                  let m = index === 0 || index === 5 ? 1 : 0;
+                  let n = index === 9 ? 4 : 0;
+                  let q = index % 2 === 0 ? 1 : 0;
+                  return (
+                    <Col key={ index } lgOffset={m} lg={2} xsOffset={q} xs={5} mdOffset={n} md={4}>
                       <div className='layout-icon-style' onClick={() => this.chooseLayout(item.title, item.uploaded)}>
-                        { item.title == 'demo-icon icon-title+text' ? <i className={item.title}>&#xe808;</i> : <i className={item.title}>&nbsp;</i> }
+                        <div className={item.cls}></div>
                       </div>
                     </Col>
-                  ))}
+                  );})}
                 </Col>
               </Row>
+              <div className='tttest'></div>
+
             </Grid>
           </div>
         </div>}

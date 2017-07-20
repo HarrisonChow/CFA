@@ -21,7 +21,7 @@ class Section extends Component {
             </Row>
             <Row>
               <Col><div className='article-title'>Section Title</div></Col>
-              <Col><input className='rectangle-388-copy-8' type='text'/></Col>
+              <Col><input className='input-style' type='text'/></Col>
             </Row>
             <Row>
               <Col><div className='article-title'>Content</div></Col>
@@ -30,7 +30,7 @@ class Section extends Component {
             {this.props.data.choosen.uploaded &&
             <Row>
               <Col><div className='article-title'>Content</div></Col>
-              <Col><input className='rectangle-388-copy-8' type='file'/></Col>
+              <Col><input className='input-style' type='file'/></Col>
             </Row>}
           </Grid>
         </div>
