@@ -49,20 +49,19 @@ class Layout extends Component {
               <Row>
                 <Col className='layoutlist'>
                   {this.state.layouts.map((item,index) => {
-                  let m = index === 0 || index === 5 ? 1 : 0;
-                  let n = index === 9 ? 4 : 0;
-                  let q = index % 2 === 0 ? 1 : 0;
-                  return (
-                    <Col key={ index } lgOffset={m} lg={2} xsOffset={q} xs={5} mdOffset={n} md={4}>
-                      <div className='layout-icon-style' onClick={() => this.chooseLayout(item.title, item.uploaded)}>
-                        <div className={item.cls}></div>
-                      </div>
-                    </Col>
-                  );})}
+                    let m = index === 0 || index === 5 ? 1 : 0;
+                    let n = index === 9 ? 4 : 0;
+                    let q = index % 2 === 0 ? 1 : 0;
+                    return (
+                      <Col key={ index } lgOffset={m} lg={2} xsOffset={q} xs={5} mdOffset={n} md={4}>
+                        <div className='layout-icon-style' onClick={() => this.chooseLayout(item.title, item.uploaded)}>
+                          <div className={item.cls}></div>
+                        </div>
+                      </Col>
+                    );
+                  })}
                 </Col>
               </Row>
-              <div className='tttest'></div>
-
             </Grid>
           </div>
         </div>}

@@ -190,6 +190,10 @@ input[type=file] {
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
+  opacity: 0.8;
+}
+.calltoaction:hover, .facebook:hover, .grid:hover, .imagefull:hover, .imageleft:hover, .imageright:hover, .quote:hover, .titletext:hover, .twitter:hover, .twocolumn:hover {
+  opacity: 1;
 }
 
 /*upload file button styles */
