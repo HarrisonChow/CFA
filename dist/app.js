@@ -30813,7 +30813,7 @@ var Article = function (_Component) {
               _defineProperty({ xsOffset: 2, xs: 8 }, 'xsOffset', 2),
               _react2.default.createElement(
                 'div',
-                { className: 'article-title' },
+                { className: 'input-title' },
                 'Article Title'
               )
             ),
@@ -30831,7 +30831,7 @@ var Article = function (_Component) {
               (_React$createElement3 = { xsOffset: 2, xs: 8 }, _defineProperty(_React$createElement3, 'xsOffset', 2), _defineProperty(_React$createElement3, 'smOffset', 2), _defineProperty(_React$createElement3, 'sm', 4), _React$createElement3),
               _react2.default.createElement(
                 'div',
-                { className: 'article-title' },
+                { className: 'input-title' },
                 'Slug'
               ),
               _react2.default.createElement('input', { className: 'input-style', type: 'text' })
@@ -30844,7 +30844,7 @@ var Article = function (_Component) {
                 (_React$createElement4 = { xsOffset: 2, xs: 8 }, _defineProperty(_React$createElement4, 'xsOffset', 2), _defineProperty(_React$createElement4, 'smOffset', 0), _defineProperty(_React$createElement4, 'sm', 4), _React$createElement4),
                 _react2.default.createElement(
                   'div',
-                  { className: 'article-title' },
+                  { className: 'input-title' },
                   'Featured Image'
                 ),
                 _react2.default.createElement(
@@ -31110,7 +31110,7 @@ var Section = function (_Component) {
                 _defineProperty({ xsOffset: 2, xs: 8 }, 'xsOffset', 2),
                 _react2.default.createElement(
                   'div',
-                  { className: 'article-title' },
+                  { className: 'input-title' },
                   'Section Title'
                 )
               ),
@@ -31128,7 +31128,7 @@ var Section = function (_Component) {
                 _defineProperty({ xsOffset: 2, xs: 8 }, 'xsOffset', 2),
                 _react2.default.createElement(
                   'div',
-                  { className: 'article-title' },
+                  { className: 'input-title' },
                   'Content'
                 )
               ),
@@ -31146,7 +31146,7 @@ var Section = function (_Component) {
                 _defineProperty({ xsOffset: 2, xs: 8 }, 'xsOffset', 2),
                 _react2.default.createElement(
                   'div',
-                  { className: 'article-title' },
+                  { className: 'input-title' },
                   'Image'
                 ),
                 _react2.default.createElement(
@@ -42064,7 +42064,7 @@ exports = module.exports = __webpack_require__(51)(undefined);
 
 
 // module
-exports.push([module.i, "html,body{\n  height: 100%;\n  background-color: #fafafa;\n}\n.home {\n  background-color: #fafafa;\n}\n.content, .container {\n  background-color: #fff;\n  width: 100%;\n  padding-bottom: 15px;\n  padding: 2%;\n}\n.news-manager {\n  margin: 0 auto;\n  text-align: center;\n  width: 629px;\n\theight: 86px;\n\tfont-family: Montserrat;\n\tfont-size: 70px;\n\tfont-weight: 900;\n\tcolor: #e1e1e1;\n}\n.placeholder-origin-f {\n\twidth: 416px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #aab8c2;\n  margin: 0 auto;\n  text-align: center;\n}\n.add {\n\tcolor: #aab8c2;\n}\n.add-btn {\n  text-align: center;\n  margin-top: 50px;\n  cursor: pointer;\n  font-size: 51px;\n}\n.new-article {\n\twidth: 117px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #ca1323;\n  margin: 0 auto;\n}\n.input-style {\n\twidth: 100%;\n\theight: 38px;\n  padding-left: 2%;\n\tborder-radius: 30px;\n\tbackground-color: #ffffff;\n\tborder: solid 0.8px #cdd1d9;\n}\n.article-title {\n\theight: 13px;\n\tfont-family: Montserrat;\n\tfont-size: 12px;\n\tfont-weight: 800;\n\tcolor: #ca1323;\n  padding: 15px;\n  margin-bottom: 5px;\n}\n.add-content {\n\twidth: 122px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #aab8c2;\n  margin: 0 auto;\n}\n.layout-style {\n  margin: 15px;\n  width: 100%;\n  height: 100px;\n}\n.choose-your-layout-s {\n\theight: 22px;\n\tfont-family: Montserrat;\n\tfont-size: 18px;\n\ttext-align: center;\n\tcolor: #343441;\n  text-align: center;\n}\ntextarea:focus, input:focus{\n    outline: none;\n}\ninput {\n  padding-left: 2%;\n}\n.layout-block, .section-block {\n  /*margin-top: 25px;*/\n  padding-bottom: 25px;\n  padding-top: 25px;\n  background-color: #fff;\n  border-top: 1px solid #e3e3e3;\n  border-bottom: 1px solid #e3e3e3;\n}\n.section-content{\n  width: 100%;\n  height: 185.9px;\n\tborder-radius: 5px;\n\tborder: solid 0.8px #cdd1d9;\n}\n.section-title{\n  text-align: center;\n  display: flex;\n  align-items: center;\n}\n.delete-btn {\n  opacity: 0;\n  width: 149.6px;\n\theight: 32px;\n\tborder-radius: 30px;\n\tbackground-color: #aab8c2;\n  float: right;\n  font-family: Montserrat;\n  font-size: 10px;\n  font-weight: 900;\n  color: #ffffff;\n  padding-top: 10px;\n  transition: opacity .35s ease;\n}\n.section-block:hover .delete-btn {\n  opacity: 1;\n}\ninput[type=file] {\n  color:transparent;\n}\n.homeadd {\n\tcolor: #ca1323;\n}\n.layoutlist {\n  font-size: 60px;\n  text-align: center;\n  margin: 25px 40px;\n}\n.layout-icon-style {\n  margin: 10px;\n  cursor: pointer;\n\theight: 90px;\n\tborder-radius: 5px;\n\tbackground-color: #fafafa;\n\tbox-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);\n}\n\n\n/* layout icon style*/\n.calltoaction {\n  background: url(" + __webpack_require__(452) + ");\n}\n.facebook {\n  background: url(" + __webpack_require__(453) + ");\n}\n.grid {\n  background: url(" + __webpack_require__(454) + ");\n}\n.imagefull {\n  background: url(" + __webpack_require__(455) + ");\n}\n.imageleft {\n  background: url(" + __webpack_require__(456) + ");\n}\n.imageright {\n  background: url(" + __webpack_require__(457) + ");\n}\n.quote {\n  background: url(" + __webpack_require__(458) + ");\n}\n.titletext {\n  background: url(" + __webpack_require__(459) + ");\n}\n.twitter {\n  background: url(" + __webpack_require__(460) + ");\n}\n.twocolumn {\n  background: url(" + __webpack_require__(461) + ");\n}\n.calltoaction, .facebook, .grid, .imagefull, .imageleft, .imageright, .quote, .titletext, .twitter, .twocolumn {\n  position: absolute;\n  top: 10px;\n  left: 0;\n  height: 90px;\n  width: 100%;\n  background-repeat: no-repeat;\n  background-position: center;\n  opacity: 0.8;\n}\n.calltoaction:hover, .facebook:hover, .grid:hover, .imagefull:hover, .imageleft:hover, .imageright:hover, .quote:hover, .titletext:hover, .twitter:hover, .twocolumn:hover {\n  opacity: 1;\n}\n\n/*upload file button styles */\n.custom-file-input {\n  position: absolute;\n  top:35px;\n  right:0;\n  width: 122px;\n  padding-right: 15px;\n}\n.custom-file-input input {\n\tvisibility: hidden;\n}\n.custom-file-input:before {\n\tborder-radius: 30px;\n\tcontent: 'CHOOSE FILE';\n\tdisplay: block;\n\tbackground: #aab8c2;\n\tfont-family: Montserrat;\n\tfont-size: 10px;\n\tfont-weight: bold;\n\tcolor: #ffffff;\n\tpadding: 12px 0px;\n\tcursor: pointer;\n\ttext-align: center;\n}\n.custom-file-input:hover:before {\n\tbackground: #e3e3e3;\n  border-radius: 30px;\n  color: #000000;\n  font-size: 10px;\n\tfont-weight: bold;\n}\n", ""]);
+exports.push([module.i, "html,body{\n  height: 100%;\n  background-color: #fafafa;\n}\n.home {\n  background-color: #fafafa;\n}\n.content, .container {\n  background-color: #fff;\n  width: 100%;\n  padding-bottom: 15px;\n  padding: 2%;\n}\n.news-manager {\n  margin: 0 auto;\n  text-align: center;\n  width: 629px;\n\theight: 86px;\n\tfont-family: Montserrat;\n\tfont-size: 70px;\n\tfont-weight: 900;\n\tcolor: #e1e1e1;\n}\n.placeholder-origin-f {\n\twidth: 416px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #aab8c2;\n  margin: 0 auto;\n  text-align: center;\n}\n.add {\n\tcolor: #aab8c2;\n}\n.add-btn {\n  text-align: center;\n  margin-top: 50px;\n  cursor: pointer;\n  font-size: 51px;\n}\n.new-article {\n\twidth: 117px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #ca1323;\n  margin: 0 auto;\n}\n.input-style {\n\twidth: 100%;\n\theight: 38px;\n  padding-left: 2%;\n\tborder-radius: 30px;\n\tbackground-color: #ffffff;\n\tborder: solid 0.8px #cdd1d9;\n}\n.input-title {\n\theight: 13px;\n\tfont-family: Montserrat;\n\tfont-size: 12px;\n\tfont-weight: 800;\n\tcolor: #ca1323;\n  padding: 15px;\n  margin-bottom: 5px;\n}\n.add-content {\n\twidth: 122px;\n\theight: 19px;\n\tfont-family: Montserrat;\n\tfont-size: 16px;\n\tfont-weight: 800;\n\tcolor: #aab8c2;\n  margin: 0 auto;\n}\n.layout-style {\n  margin: 15px;\n  width: 100%;\n  height: 100px;\n}\n.choose-your-layout-s {\n\theight: 22px;\n\tfont-family: Montserrat;\n\tfont-size: 18px;\n\ttext-align: center;\n\tcolor: #343441;\n  text-align: center;\n}\ntextarea:focus, input:focus{\n    outline: none;\n}\ninput {\n  padding-left: 2%;\n}\n.layout-block, .section-block {\n  /*margin-top: 25px;*/\n  padding-bottom: 25px;\n  padding-top: 25px;\n  background-color: #fff;\n  border-top: 1px solid #e3e3e3;\n  border-bottom: 1px solid #e3e3e3;\n}\n.section-content{\n  width: 100%;\n  height: 185.9px;\n\tborder-radius: 5px;\n\tborder: solid 0.8px #cdd1d9;\n}\n.section-title{\n  text-align: center;\n  display: flex;\n  align-items: center;\n}\n.delete-btn {\n  opacity: 0;\n  width: 149.6px;\n\theight: 32px;\n\tborder-radius: 30px;\n\tbackground-color: #aab8c2;\n  float: right;\n  font-family: Montserrat;\n  font-size: 10px;\n  font-weight: 900;\n  color: #ffffff;\n  padding-top: 10px;\n  transition: opacity .35s ease;\n}\n.section-block:hover .delete-btn {\n  opacity: 1;\n}\ninput[type=file] {\n  color:transparent;\n}\n.homeadd {\n\tcolor: #ca1323;\n}\n.layoutlist {\n  font-size: 60px;\n  text-align: center;\n  margin: 25px 40px;\n}\n.layout-icon-style {\n  margin: 10px;\n  cursor: pointer;\n\theight: 90px;\n\tborder-radius: 5px;\n\tbackground-color: #fafafa;\n\tbox-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);\n}\n\n\n/* layout icon style*/\n.calltoaction {\n  background: url(" + __webpack_require__(452) + ");\n}\n.facebook {\n  background: url(" + __webpack_require__(453) + ");\n}\n.grid {\n  background: url(" + __webpack_require__(454) + ");\n}\n.imagefull {\n  background: url(" + __webpack_require__(455) + ");\n}\n.imageleft {\n  background: url(" + __webpack_require__(456) + ");\n}\n.imageright {\n  background: url(" + __webpack_require__(457) + ");\n}\n.quote {\n  background: url(" + __webpack_require__(458) + ");\n}\n.titletext {\n  background: url(" + __webpack_require__(459) + ");\n}\n.twitter {\n  background: url(" + __webpack_require__(460) + ");\n}\n.twocolumn {\n  background: url(" + __webpack_require__(461) + ");\n}\n.calltoaction, .facebook, .grid, .imagefull, .imageleft, .imageright, .quote, .titletext, .twitter, .twocolumn {\n  position: absolute;\n  top: 10px;\n  left: 0;\n  height: 90px;\n  width: 100%;\n  background-repeat: no-repeat;\n  background-position: center;\n  opacity: 0.8;\n}\n.calltoaction:hover, .facebook:hover, .grid:hover, .imagefull:hover, .imageleft:hover, .imageright:hover, .quote:hover, .titletext:hover, .twitter:hover, .twocolumn:hover {\n  opacity: 1;\n}\n\n/*upload file button styles */\n.custom-file-input {\n  position: absolute;\n  top:35px;\n  right:0;\n  width: 122px;\n  padding-right: 15px;\n}\n.custom-file-input input {\n\tvisibility: hidden;\n}\n.custom-file-input:before {\n\tborder-radius: 30px;\n\tcontent: 'CHOOSE FILE';\n\tdisplay: block;\n\tbackground: #aab8c2;\n\tfont-family: Montserrat;\n\tfont-size: 10px;\n\tfont-weight: bold;\n\tcolor: #ffffff;\n\tpadding: 12px 0px;\n\tcursor: pointer;\n\ttext-align: center;\n}\n.custom-file-input:hover:before {\n\tbackground: #e3e3e3;\n  border-radius: 30px;\n  color: #000000;\n  font-size: 10px;\n\tfont-weight: bold;\n}\n", ""]);
 
 // exports
 

@@ -44,7 +44,7 @@ class Layout extends Component {
           <div className='layout-block'>
             <Grid>
               <Row>
-                <Col className='choose-your-layout-s'>Choose your layout style</Col>
+                <Col className='title-layout'>Choose your layout style</Col>
               </Row>
               <Row>
                 <Col className='layoutlist'>
@@ -57,7 +57,9 @@ class Layout extends Component {
                         <div className='layout-icon-style' onClick={() => this.chooseLayout(item.title, item.uploaded)}>
                           <div>
                             <div className={item.classname}></div>
-                            <div className='layout-title'>{item.title}</div>
+                            <div className='layout-title'>
+                              {item.title}
+                            </div>
                           </div>
                         </div>
                       </Col>

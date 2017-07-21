@@ -16,6 +16,10 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <div className='header'>
+          <div className='logo'></div>
+          <input className='search' placeholder='Search...'/>
+        </div>
         { this.state.show == false &&
           <div className='home'>
             <div className='title'>
