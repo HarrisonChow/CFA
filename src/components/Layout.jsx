@@ -21,16 +21,16 @@ class Layout extends Component {
     this.setState(
     {
       layouts: [
-        { title: 'demo-icon icon-calltoaction', cls:'calltoaction', uploaded: false },
-        { title: 'demo-icon icon-facebook', cls:'facebook', uploaded: false },
-        { title: 'demo-icon icon-grid', cls:'grid', uploaded: true },
-        { title: 'demo-icon icon-imagefull', cls:'imagefull', uploaded: true },
-        { title: 'demo-icon icon-imageleft', cls:'imageleft', uploaded: true },
-        { title: 'demo-icon icon-imageright', cls:'imageright', uploaded: true },
-        { title: 'demo-icon icon-quote', cls:'quote', uploaded: false },
-        { title: 'demo-icon icon-title+text', cls:'titletext', uploaded: false },
-        { title: 'demo-icon icon-twitter', cls:'twitter', uploaded: true },
-        { title: 'demo-icon icon-twocolumn', cls:'twocolumn', uploaded: false },
+        { title: 'Call To Action', classname:'calltoaction', uploaded: false },
+        { title: 'Facebook Feed', classname:'facebook', uploaded: false },
+        { title: 'Content Grid', classname:'grid', uploaded: true },
+        { title: 'Image(s)', classname:'imagefull', uploaded: true },
+        { title: 'Image Left', classname:'imageleft', uploaded: true },
+        { title: 'Image Right', classname:'imageright', uploaded: true },
+        { title: 'Quote', classname:'quote', uploaded: false },
+        { title: 'Title & Text', classname:'titletext', uploaded: false },
+        { title: 'Twitter Feed', classname:'twitter', uploaded: true },
+        { title: 'Two Column Text', classname:'twocolumn', uploaded: false },
       ],
       choosen: {title:'', uploaded:false},
     });
@@ -55,7 +55,10 @@ class Layout extends Component {
                     return (
                       <Col key={ index } lgOffset={m} lg={2} xsOffset={q} xs={5} mdOffset={n} md={4}>
                         <div className='layout-icon-style' onClick={() => this.chooseLayout(item.title, item.uploaded)}>
-                          <div className={item.cls}></div>
+                          <div>
+                            <div className={item.classname}></div>
+                            <div className='layout-title'>{item.title}</div>
+                          </div>
                         </div>
                       </Col>
                     );

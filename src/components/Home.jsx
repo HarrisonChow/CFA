@@ -18,12 +18,18 @@ class Home extends Component {
       <div>
         { this.state.show == false &&
           <div className='home'>
-            <div className='news-manager'>NEWS MANAGER</div>
-            <p className='placeholder-origin-f'>Placeholder origin for creating new News Articles</p>
-            <div className='add-btn' onClick={() => this.onClick()}>
-              <i className="demo-icon icon-add homeadd"></i>
+            <div className='title'>
+              NEWS MANAGER
             </div>
-            <p className='new-article'>NEW ARTICLE</p>
+            <p className='subtitle'>
+              Placeholder origin for creating new News Articles
+            </p>
+            <div className='add-new-article'>
+              <div className='add-btn' onClick={() => this.onClick()}></div>
+            </div>
+            <p className='new-article'>
+              NEW ARTICLE
+            </p>
           </div> }
         { this.state.show && <Article /> }
       </div>

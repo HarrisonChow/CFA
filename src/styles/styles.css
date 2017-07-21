@@ -1,44 +1,61 @@
 html,body{
   height: 100%;
-  background-color: #fafafa;
+  background-color: #FAFAFA;
 }
 .home {
-  background-color: #fafafa;
+  background-color: #FAFAFA;
 }
 .content, .container {
-  background-color: #fff;
+  background-color: #FFFFFF;
   width: 100%;
   padding-bottom: 15px;
   padding: 2%;
 }
-.news-manager {
+.title {
   margin: 0 auto;
   text-align: center;
-  width: 629px;
+  width: 100%;
 	height: 86px;
 	font-family: Montserrat;
 	font-size: 70px;
 	font-weight: 900;
-	color: #e1e1e1;
+	color: #E1E1E1;
 }
-.placeholder-origin-f {
-	width: 416px;
+.subtitle {
+	width: 100%;
 	height: 19px;
 	font-family: Montserrat;
 	font-size: 16px;
 	font-weight: 800;
-	color: #aab8c2;
+	color: #AAB8C2;
   margin: 0 auto;
   text-align: center;
 }
 .add {
-	color: #aab8c2;
+	color: #AAB8C2;
 }
-.add-btn {
-  text-align: center;
+.add-new-article {
+  background: url('../images/AddRed.svg');
+}
+.add-new-content {
+  background: url('../images/AddGrey.svg');
+}
+.add-new-article, .add-new-content {
   margin-top: 50px;
+  height: 52px;
+  width: 52px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.add-new-article:hover, .add-new-content:hover {
+  background-size: 90%;
+}
+.add-btn{
+  width: 51px;
+  height: 51px;
   cursor: pointer;
-  font-size: 51px;
 }
 .new-article {
 	width: 117px;
@@ -72,14 +89,10 @@ html,body{
 	font-family: Montserrat;
 	font-size: 16px;
 	font-weight: 800;
-	color: #aab8c2;
+	color: #AAB8C2;
   margin: 0 auto;
 }
-.layout-style {
-  margin: 15px;
-  width: 100%;
-  height: 100px;
-}
+
 .choose-your-layout-s {
 	height: 22px;
 	font-family: Montserrat;
@@ -88,14 +101,8 @@ html,body{
 	color: #343441;
   text-align: center;
 }
-textarea:focus, input:focus{
-    outline: none;
-}
-input {
-  padding-left: 2%;
-}
+
 .layout-block, .section-block {
-  /*margin-top: 25px;*/
   padding-bottom: 25px;
   padding-top: 25px;
   background-color: #fff;
@@ -118,7 +125,7 @@ input {
   width: 149.6px;
 	height: 32px;
 	border-radius: 30px;
-	background-color: #aab8c2;
+	background-color: #AAB8C2;
   float: right;
   font-family: Montserrat;
   font-size: 10px;
@@ -130,28 +137,43 @@ input {
 .section-block:hover .delete-btn {
   opacity: 1;
 }
+
+textarea:focus, input:focus{
+    outline: none;
+}
+input, textarea {
+  padding-left: 2%;
+}
 input[type=file] {
   color:transparent;
 }
 .homeadd {
 	color: #ca1323;
 }
+
+/* cell style for layout*/
+.layout-title {
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-block;
+  margin-top: 95px;
+}
 .layoutlist {
   font-size: 60px;
   text-align: center;
-  margin: 25px 40px;
+  margin: 10px 40px;
 }
 .layout-icon-style {
-  margin: 10px;
+  margin: 15px;
   cursor: pointer;
 	height: 90px;
 	border-radius: 5px;
-	background-color: #fafafa;
+	background-color: #FAFAFA;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
 }
 
 
-/* layout icon style*/
+/* layout icon background style*/
 .calltoaction {
   background: url('../images/CallToAction.svg');
 }
@@ -211,7 +233,7 @@ input[type=file] {
 	border-radius: 30px;
 	content: 'CHOOSE FILE';
 	display: block;
-	background: #aab8c2;
+	background: #AAB8C2;
 	font-family: Montserrat;
 	font-size: 10px;
 	font-weight: bold;
