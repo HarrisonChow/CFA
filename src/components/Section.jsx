@@ -22,8 +22,8 @@ class Section extends Component {
         <div className='section-block'>
           <Grid>
             <Row className='section-title'>
-              <Col xsOffset={4} xs={4}>
-                Text & Title
+              <Col xsOffset={4} xs={4} className='title-section'>
+                {this.props.data.choosen.title}
               </Col>
               <Col xs={4}>
                 <div className='delete-btn' onClick={() => this.delete()}>
