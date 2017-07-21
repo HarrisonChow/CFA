@@ -51,6 +51,12 @@ class Article extends Component {
       <div>
         <Grid>
           <Row>
+            {this.state.sessionIds.length > 0 ?
+            <Col xs={12}>
+              <div className='save-btn' >
+                SAVE & PREVIEW
+              </div>
+            </Col> : null}
             <Col xsOffset={2} xs={8} xsOffset={2}>
               <div className='input-title'>
                 Article Title

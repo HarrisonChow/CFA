@@ -17,6 +17,7 @@ class Section extends Component {
   }
 
   render() {
+  console.log(this);
     return (
       <div>
         <div className='section-block'>

@@ -146,6 +146,25 @@ html,body{
 	text-align: center;
 	color: #343441;
 }
+.save-btn {
+  opacity: 1;
+  text-align: center;
+  width: 149.6px;
+  height: 32px;
+  border-radius: 30px;
+  background-color: rgba(92, 184, 92, 0.8);
+  float: right;
+  font-family: Montserrat;
+  font-size: 10px;
+  font-weight: 500;
+  color: #FFFFFF;
+  padding-top: 10px;
+  transition: opacity .35s ease;
+}
+.save-btn:hover {
+  background-color: rgba(92, 184, 92, 1);
+  cursor: pointer;
+}
 .delete-btn {
   opacity: 0;
   width: 149.6px;
