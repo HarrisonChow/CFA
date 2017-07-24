@@ -5,22 +5,29 @@ class Section extends Component {
   constructor() {
     super();
     this.state = {
-      files:'',
+      image:'',
+      sectionData:{title:'', content:'', image:''}
     };
   }
-  onChange(event) {
-    this.setState({files: event.target.value})
+  changeImage(event) {
+    this.setState({image: event.target.value})
   }
 
   delete() {
     this.props.removeContent();
   }
 
+  changeInput(event) {
+    this.state.sectionData[event.target.name] = event.target.value;
+    this.setState({sectionData: this.state.sectionData});
+    this.props.formDataRetrive(this.props.data.id, this.state.sectionData);
+  }
+
   render() {
-  console.log(this);
+
     return (
       <div>
-        <div className='section-block'>
+        <div className='section-block' id={this.props.data.id}>
           <Grid>
             <Row className='section-title'>
               <Col xsOffset={4} xs={4} className='title-section'>
@@ -40,7 +47,7 @@ class Section extends Component {
                 </div>
               </Col>
               <Col xsOffset={2} xs={8} xsOffset={2}>
-                <input className='input-style' type='text' placeholder='Title of article here...'/>
+                <input name='title' className='input-style' type='text' value={this.state.sectionData.title} placeholder='Title of article here...' onChange={this.changeInput.bind(this)}/>
               </Col>
             </Row>}
             {this.props.data.choosen.title !=='Image(s)' &&
@@ -51,7 +58,7 @@ class Section extends Component {
                 </div>
               </Col>
               <Col xsOffset={2} xs={8} xsOffset={2}>
-                <textarea className='section-content' type='text' placeholder='Your content goes here...'/>
+                <textarea name='content' className='section-content' value={this.state.sectionData.content} type='text' placeholder='Your content goes here...' onChange={this.changeInput.bind(this)}/>
               </Col>
             </Row>}
             {this.props.data.choosen.uploaded &&
@@ -61,11 +68,11 @@ class Section extends Component {
                   Image
                 </div>
                 <div>
-                  <input className='input-style' disabled='disabled' value={this.state.files} placeholder='Drag & Drop or...'/>
+                  <input className='input-style' disabled='disabled' value={this.state.sectionData.image} placeholder='Drag & Drop or...'/>
                 </div>
                 <div>
                   <label className='custom-file-input'>
-                    <input type='file'  onChange={this.onChange.bind(this)}/>
+                    <input name='image' type='file'  onChange={this.changeInput.bind(this)}/>
                   </label>
                 </div>
               </Col>

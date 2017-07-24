@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Layout from './Layout.jsx';
 import Message from './Message.jsx';
-import { Grid, Col, Row } from 'react-bootstrap';
+import { Grid, Col, Row, Button } from 'react-bootstrap';
 
 class Article extends Component {
   constructor() {
     super();
+    this.formDataRetrive = this.formDataRetrive.bind(this);
     this.removeContent = this.removeContent.bind(this);
     this.state = {
       files: '',
@@ -13,6 +14,7 @@ class Article extends Component {
       slug: '',
       errors: false,
       sessionIds: [],
+      sectionsData: []
     };
   }
   addContent(){
@@ -28,32 +30,64 @@ class Article extends Component {
   renderRemainders() {
     const sessionIds = this.state.sessionIds;
     return sessionIds.map((id) => (
-      <Layout removeContent={() => this.removeContent(id)} key={id} id={id}/>
+      <Layout removeContent={() => this.removeContent(id)} formDataRetrive={this.formDataRetrive} key={id} id={id}/>
     ))
   }
 
-  onChange(event) {
+
+  formDataRetrive(id, info){
+    const sectionsData = this.state.sectionsData;
+    sectionsData.push({'id':id, 'details':info});
+    var finalresult = [];
+    var filter = [];
+    for (var i=0; i<sectionsData.length;i++) {
+        if (filter[sectionsData[i].id]) continue;
+        finalresult.push(sectionsData[i]);
+        filter[sectionsData[i].id] = true;
+    }
+    this.setState({sectionsData: finalresult});
+  }
+
+  changeFiles(event) {
     this.setState({files: event.target.value})
   }
-  titleCheck(event) {
+
+  changeTitle(event) {
     this.setState({title: event.target.value})
   }
-  slugCheck(event) {
+
+  changeSlug(event) {
     this.setState({slug: event.target.value})
   }
+
   messageInfo(){
    this.setState({errors: true});
    setTimeout(function() { this.setState({errors: false}); }.bind(this), 5000);
   }
 
+  handleSubmit(event){
+    event.preventDefault();
+    let formData;
+    formData={
+      title: this.state.title,
+      slug: this.state.slug,
+      files: this.state.files,
+      sections: this.state.sectionsData
+    }
+    console.log(formData);
+    console.log(JSON.parse(JSON.stringify(formData)))
+  }
+
   render() {
     return (
       <div>
+      <form className="donationForm" onSubmit={this.handleSubmit.bind(this)}>
         <Grid>
           <Row>
             {this.state.sessionIds.length > 0 ?
             <Col xs={12}>
-              <div className='save-btn' >
+              <input value="submit" type="submit"/>
+              <div type="submit" value="Submit" className='save-btn' >
                 SAVE & PREVIEW
               </div>
             </Col> : null}
@@ -63,7 +97,7 @@ class Article extends Component {
               </div>
             </Col>
             <Col xsOffset={2} xs={8} xsOffset={2}>
-              <input className='input-style' type='text' placeholder='Title of article here...' onChange={this.titleCheck.bind(this)}/>
+              <input className='input-style' type='text' value={this.state.title} placeholder='Title of article here...' onChange={this.changeTitle.bind(this)}/>
             </Col>
           </Row>
           <Row>
@@ -72,7 +106,7 @@ class Article extends Component {
                 Slug
               </div>
               <div>
-                <input className='input-style' type='text' placeholder='First name...' onChange={this.slugCheck.bind(this)}/>
+                <input className='input-style' type='text' placeholder='First name...' onChange={this.changeSlug.bind(this)}/>
               </div>
             </Col>
             <Col xsOffset={2} xs={8} xsOffset={2} smOffset={0} sm={4}>
@@ -84,7 +118,7 @@ class Article extends Component {
               </div>
               <div>
                 <label className='custom-file-input'>
-                  <input type='file'  onChange={this.onChange.bind(this)} />
+                  <input type='file'  onChange={this.changeFiles.bind(this)} />
                 </label>
               </div>
             </Col>
@@ -110,6 +144,7 @@ class Article extends Component {
             ADD CONTENT
           </p>
         </div>
+        </form>
       </div>
     );
   }

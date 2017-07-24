@@ -41,7 +41,7 @@ class Layout extends Component {
       <div>
         { this.state.choosen.title ==='' &&
         <div>
-          <div className='layout-block'>
+          <div className='layout-block' id={this.props.id}>
             <Grid>
               <Row>
                 <Col className='title-layout'>Choose your layout style</Col>
@@ -70,7 +70,7 @@ class Layout extends Component {
             </Grid>
           </div>
         </div>}
-        { this.state.choosen.title !== '' && <Section removeContent={this.props.removeContent} data={{choosen:this.state.choosen, id:this.props.id}}/> }
+        { this.state.choosen.title !== '' && <Section formDataRetrive={this.props.formDataRetrive} removeContent={this.props.removeContent} data={{choosen:this.state.choosen, id:this.props.id}}/> }
       </div>
     );
   }
