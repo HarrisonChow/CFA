@@ -86,10 +86,9 @@ class Article extends Component {
           <Row>
             {this.state.sessionIds.length > 0 ?
             <Col xs={12}>
-              <input value="submit" type="submit"/>
-              <div type="submit" value="Submit" className='save-btn' >
+              <button type="submit" value="Submit" className='save-btn' >
                 SAVE & PREVIEW
-              </div>
+              </button>
             </Col> : null}
             <Col xsOffset={2} xs={8} xsOffset={2}>
               <div className='input-title'>

@@ -187,17 +187,19 @@
         width: 149.6px;
         height: 32px;
         border-radius: 30px;
+        border: 1px solid rgba(92, 184, 92, 0.8);
         background-color: rgba(92, 184, 92, 0.8);
         float: right;
         font-family: Montserrat;
         font-size: 10px;
         font-weight: 500;
         color: #FFFFFF;
-        padding-top: 10px;
+        padding-top: 5px;
         transition: opacity .35s ease;
     }
     .save-btn:hover {
         background-color: rgba(92, 184, 92, 1);
+        border: 1px solid rgba(92, 184, 92, 1);
         cursor: pointer;
     }
     .delete-btn {
@@ -578,10 +580,9 @@
                         <ReactBootstrap.Row>
                             {this.state.sessionIds.length > 0 ?
                             <ReactBootstrap.Col xs={12}>
-                                <input value="submit" type="submit"/>
-                                <div type="submit" value="Submit" className='save-btn' >
+                                <button type="submit" value="Submit" className='save-btn' >
                                     SAVE & PREVIEW
-                                </div>
+                                </button>
                             </ReactBootstrap.Col> : null}
                             <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
                                 <div className='input-title'>
