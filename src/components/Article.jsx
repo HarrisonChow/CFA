@@ -75,7 +75,7 @@ class Article extends Component {
       sections: this.state.sectionsData
     }
     console.log(formData);
-    console.log(JSON.parse(JSON.stringify(formData)))
+    co
   }
 
   render() {
