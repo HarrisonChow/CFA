@@ -1,0 +1,992 @@
+<style type="text/css">
+
+    #popup {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        top: 50px;
+        left: 0;
+        display: none;
+        position: fixed;
+        background-color: rgba(255, 255, 255, 0.0);
+        overflow: auto;
+    }
+
+    hr {
+        margin: 10px -50px;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    .home {
+        background-color: #FAFAFA;
+        padding-top: 6rem;
+        border: solid 1px #DBDBDB;
+        border-top: 0;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .article {
+        background-color: #FAFAFA;
+        border: solid 1px #DBDBDB;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .header {
+        width: 80%;
+        height: 50px;
+        padding-top: 8px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #FFFFFF;
+        border: solid 1px #DBDBDB;
+        border-bottom: 0;
+        text-align: center;
+    }
+    .logo {
+        float: left;
+    }
+    .search {
+        width: 25%;
+        min-width: 250px;
+        height: 30px;
+        border-radius: 100px;
+        background-color: rgba(250, 250, 250, 0.1);
+        border: solid 1px #EDEDED;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .content, .container {
+        background: #FFFFFF;
+        width: 100%;
+        padding-bottom: 15px;
+        padding: 2%;
+        min-width: 100%;
+    }
+
+    /*Title subtitle styles*/
+    .title {
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+        font-family: Montserrat;
+        font-size: 70px;
+        font-weight: 800;
+        color: #E1E1E1;
+    }
+    .subtitle {
+        width: 100%;
+        height: 19px;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        color: #AAB8C2;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .new-article{
+        color: #CA1323;
+    }
+    .add-content{
+        color: #AAB8C2;
+    }
+    .new-article, .add-content {
+        text-align: center;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 800;
+        margin: 15px auto;
+    }
+
+    /* add article and content button style*/
+    .add-new-article {
+        background: url('http://localhost:8080/documents/20143/0/AddRed.svg/544aed1d-2104-3079-1a50-db3ccdee43c2');
+    }
+    .add-new-content {
+        background: url('http://localhost:8080/documents/20143/0/AddGrey.svg/9ac52a48-ef0f-c170-456b-826e00f1d68c');
+    }
+    .add-new-article, .add-new-content {
+        margin-top: 50px;
+        height: 52px;
+        width: 52px;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .add-new-article:hover, .add-new-content:hover {
+        background-size: 90%;
+    }
+    .add-btn{
+        width: 51px;
+        height: 51px;
+        cursor: pointer;
+    }
+
+    /*input area styles*/
+    .input-style {
+        width: 100%;
+        height: 38px;
+        padding-left: 2rem;
+        border-radius: 30px;
+        background-color: #FFFFFF;
+        border: solid 0.8px #CDD1D9;
+    }
+    .input-title {
+        height: 13px;
+        font-family: Montserrat;
+        font-size: 10px;
+        font-weight: bold;
+        color: #CA1323;
+        padding: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /*layouts choosen styles*/
+    .title-layout {
+        height: 22px;
+        font-family: Montserrat;
+        font-size: 18px;
+        text-align: center;
+        color: #343441;
+        text-align: center;
+    }
+    .layout-block, .section-block {
+        padding-bottom: 25px;
+        padding-top: 25px;
+        background-color: #FFFFFF;
+        border-top: 1px solid #E3E3E3;
+        border-bottom: 1px solid #E3E3E3;
+    }
+    .section-content{
+        width: 100%;
+        height: 185.9px;
+        border-radius: 5px;
+        border: solid 0.8px #CDD1D9;
+    }
+    .section-title{
+        text-align: center;
+        display: flex;
+        align-items: center;
+    }
+    .title-section {
+        height: 22px;
+        font-family: Montserrat;
+        font-size: 18px;
+        text-align: center;
+        color: #343441;
+    }
+    .save-btn {
+        opacity: 1;
+        text-align: center;
+        width: 149.6px;
+        height: 32px;
+        border-radius: 30px;
+        border: 1px solid rgba(92, 184, 92, 0.8);
+        background-color: rgba(92, 184, 92, 0.8);
+        float: right;
+        font-family: Montserrat;
+        font-size: 10px;
+        font-weight: 500;
+        color: #FFFFFF;
+        padding-top: 5px;
+        transition: opacity .35s ease;
+    }
+    .save-btn:hover {
+        background-color: rgba(92, 184, 92, 1);
+        border: 1px solid rgba(92, 184, 92, 1);
+        cursor: pointer;
+    }
+    .delete-btn {
+        opacity: 0;
+        width: 149.6px;
+        height: 32px;
+        border-radius: 30px;
+        background-color: #AAB8C2;
+        float: right;
+        font-family: Montserrat;
+        font-size: 10px;
+        font-weight: 500;
+        color: #FFFFFF;
+        padding-top: 10px;
+        transition: opacity .35s ease;
+    }
+    .delete-btn:hover {
+        background: #E3E3E3;
+        color: #000000;
+    }
+    .section-block:hover .delete-btn {
+        opacity: 1;
+    }
+
+    textarea:focus, input:focus{
+        outline: none;
+    }
+    input, textarea {
+        padding-left: 2rem;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #A8ADB6;
+        height: 27px;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 0.3px;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+        color: #A8ADB6;
+        height: 27px;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 0.3px;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+        color: #A8ADB6;
+        height: 27px;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 0.3px;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+        color: #A8ADB6;
+        height: 27px;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 0.3px;
+    }
+
+    /* cell style for layout*/
+    .layout-title {
+        display: inline-block;
+        margin-top: 9.5rem;
+        height: 22px;
+        font-family: Montserrat;
+        font-size: 14px;
+        font-weight: 300;
+        text-align: center;
+        color: #343441;
+    }
+    .layoutlist {
+        font-size: 60px;
+        text-align: center;
+        margin: 1rem 4rem;
+    }
+    .layout-icon-style {
+        margin: 15px ;
+        cursor: pointer;
+        height: 90px;
+        border-radius: 5px;
+        background-color: #FAFAFA;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+    }
+
+
+    /* layout icon background style*/
+    .calltoaction {
+        background: url('http://localhost:8080/documents/20143/0/CallToAction.svg/a63cf5d7-df8e-44b0-e532-dcae779d721b');
+    }
+    .facebook {
+        background: url('http://localhost:8080/documents/20143/0/Facebook.svg/1ad78b9b-08a7-11eb-bd29-b5f3abf2db10');
+    }
+    .grid {
+        background: url('http://localhost:8080/documents/20143/0/Grid.svg/54ce8a9f-02f0-c02c-eaa4-cc1874d21b64');
+    }
+    .imagefull {
+        background: url('http://localhost:8080/documents/20143/0/ImageFull.svg/9551a988-aa65-6605-cd2f-9d4873477719');
+    }
+    .imageleft {
+        background: url('http://localhost:8080/documents/20143/0/ImageLeft.svg/4243cc76-30ec-ecfa-59b1-1d43f67cfa6e');
+    }
+    .imageright {
+        background: url('http://localhost:8080/documents/20143/0/ImageRight.svg/a4b5e6d7-2c30-71e2-ede6-35d38624dfe5');
+    }
+    .quote {
+        background: url('http://localhost:8080/documents/20143/0/Quote.svg/7b107861-67f7-26d0-f3a2-e6cfb699a332');
+    }
+    .titletext {
+        background: url('http://localhost:8080/documents/20143/0/Title%2BText.svg/88b31521-3987-8fe1-5913-79873988a14b');
+    }
+    .twitter {
+        background: url('http://localhost:8080/documents/20143/0/Twitter.svg/15e1c367-c870-cc54-5c35-cf4f422e9be2');
+    }
+    .twocolumn {
+        background: url('http://localhost:8080/documents/20143/0/TwoColumn.svg/12bef65f-8421-f9a8-278d-46da8403dd0c');
+    }
+    .calltoaction, .facebook, .grid, .imagefull, .imageleft, .imageright, .quote, .titletext, .twitter, .twocolumn {
+        position: absolute;
+        top: 15px;
+        left: 0;
+        height: 90px;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.8;
+    }
+    .calltoaction:hover, .facebook:hover, .grid:hover, .imagefull:hover, .imageleft:hover, .imageright:hover, .quote:hover, .titletext:hover, .twitter:hover, .twocolumn:hover {
+        opacity: 1;
+    }
+
+    /*upload file button styles */
+    .custom-file-input {
+        position: absolute;
+        top: 38px;
+        right: 0;
+        width: 122px;
+        padding-right: 18px;
+    }
+    .custom-file-input input {
+        visibility: hidden;
+    }
+    .custom-file-input:before {
+        border-radius: 30px;
+        content: 'CHOOSE FILE';
+        display: block;
+        background: #AAB8C2;
+        font-family: Montserrat;
+        font-size: 10px;
+        font-weight: 400;
+        color: #FFFFFF;
+        padding: 9px 0px;
+        cursor: pointer;
+        text-align: center;
+    }
+    .custom-file-input:hover:before {
+        background: #E3E3E3;
+        border-radius: 30px;
+        color: #000000;
+        font-size: 10px;
+        font-weight: bold;
+    }
+    .message {
+        margin-top: 15px;
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    #x {
+        position: absolute;
+        background: #787776;
+        color: #FFFFFF;
+        font-weight: 600;
+        top: 0;
+        right: 10%;
+        height: 30px;
+        width: 30px;
+        border-radius: 5px;
+        border: 1px solid #787776;
+    }
+    #x:hover {
+        background: #F05A1E;
+    }
+    #x:focus, .button:focus, [type="submit"]:focus {
+       outline: none;
+    }
+
+    /*different resolution*/
+    @media (max-width: 698px) {
+        .title {
+            font-size: 48px;
+            font-weight: 600;
+        }
+    }
+    @media (max-width: 568px) {
+        .calltoaction, .grid, .imagefull, .imageleft, .imageright, .quote, .titletext, .twitter, .twocolumn {
+            background-size: 50%;
+        }
+        .facebook {
+            background-size: 15%;
+        }
+        .layout-title {
+            height: 18px;
+            font-size: 10px;
+        }
+    }
+    @media (min-width: 1200px){
+        .container {
+            min-width: 100%;
+            max-width: 100%;
+        }
+    }
+    @media (min-width: 992px){
+        .container {
+            min-width: 100%;
+            max-width: 100%;
+        }
+    }
+    @media (min-width: 768px){
+        .container {
+            min-width: 100%;
+            max-width: 100%;
+        }
+    }
+
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script>
+    define._amd = define.amd;
+    define.amd = false;
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.31.1/react-bootstrap.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>
+    define.amd = define._amd;
+</script>
+
+
+
+
+<script type='text/babel'>
+
+    function div_show() {
+        document.getElementById('popup').style.display = "block";
+    }
+    function div_hide(){
+        document.getElementById('popup').style.display = "none";
+    }
+
+    class Home extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                show: false,
+            };
+        }
+        onClick() {
+            this.setState({show: true});
+        }
+
+        render() {
+            return (
+            <div>
+                <div className='header'>
+                    <div className='logo'></div>
+                    <input className='search' placeholder='Search...'/>
+                </div>
+            { this.state.show == false &&
+                <div className='home'>
+                    <div className='title'>
+                        NEWS MANAGER
+                    </div>
+                    <p className='subtitle'>
+                        Placeholder origin for creating new News Articles
+                    </p>
+                    <div className='add-new-article'>
+                        <div className='add-btn' onClick={() => this.onClick()}></div>
+                    </div>
+                    <p className='new-article'>
+                        NEW ARTICLE
+                    </p>
+                </div>
+            }
+            { this.state.show && <Article /> }
+            </div>
+            );
+        }
+    }
+
+
+    class Article extends React.Component {
+        constructor() {
+            super();
+            this.formDataRetrive = this.formDataRetrive.bind(this);
+            this.removeContent = this.removeContent.bind(this);
+            this.state = {
+                files: '',
+                title: '',
+                slug: '',
+                errors: false,
+                sessionIds: [],
+                sectionsData: []
+            };
+        }
+
+
+        addContent(){
+            const sessionIds = this.state.sessionIds;
+            const id = sessionIds.length ? sessionIds[sessionIds.length - 1] + 1 : 0;
+            sessionIds.push(id);
+            this.setState({sessionIds});
+        }
+        removeContent(id){
+            const sessionIds = this.state.sessionIds;
+            this.setState({sessionIds: sessionIds.filter((sessionId) => id !== sessionId)});
+        }
+        renderRemainders() {
+            const sessionIds = this.state.sessionIds;
+            return sessionIds.map((id) => (
+            <Layout removeContent={() => this.removeContent(id)} formDataRetrive={this.formDataRetrive} key={id} id={id}/>
+            ));
+        }
+
+        formDataRetrive(id, info, layout){
+            const sectionsData = this.state.sectionsData;
+            sectionsData.push({'id':id, 'details':info, 'layout':layout});
+            var finalresult = [];
+            var filter = [];
+            for (var i=0; i<sectionsData.length;i++) {
+                if (filter[sectionsData[i].id]) continue;
+                finalresult.push(sectionsData[i]);
+                filter[sectionsData[i].id] = true;
+            }
+            this.setState({sectionsData: finalresult});
+        }
+
+        changeFiles(event) {
+            this.setState({files: event.target.value});
+        }
+
+        changeTitle(event) {
+            this.setState({title: event.target.value});
+        }
+
+        changeSlug(event) {
+            this.setState({slug: event.target.value});
+        }
+
+        messageInfo(){
+            this.setState({errors: true});
+            setTimeout(function() { this.setState({errors: false}); }.bind(this), 5000);
+        }
+
+        handleSubmit(event){
+            event.preventDefault();
+            let formData;
+            formData={
+                title: this.state.title,
+                slug: this.state.slug,
+                files: this.state.files,
+                sections: this.state.sectionsData
+            };
+
+            let allContents = this.state.sectionsData;
+            let contentWithLayout="<?xml version=\"1.0\"?> <root available-locales=\"en_US\" default-locale=\"en_US\"> <dynamic-element name=\"content\" type=\"text_area\" index-type=\"text\" instance-id=\"sntb\"> <dynamic-content language-id=\"en_US\"> <![CDATA[";
+
+            allContents.forEach(function(content) {
+                switch (content.layout) {
+                    case 'Title & Text':
+                        contentWithLayout+="<div class=\"Title-Text row\">
+                                                <div class=\"title col-sm-12\">
+                                                    "+content.details.title+"
+                                                </div>
+                                                <div class=\"content col-sm-12\">
+                                                    "+content.details.content+"
+                                                </div>
+                                            </div>";
+                    break;
+
+                    case 'Two Column Text':
+                        contentWithLayout+="<div class=\"Two-Column-Text row\">
+                                                <div class=\"title col-sm-12\">
+                                                    "+content.details.title+"
+                                                </div>
+                                                <div class=\"col-sm-12 row\">
+                                                    <div class=\"col-sm-6\">
+                                                        "+content.details.content+"
+                                                    </div>
+                                                    <div class=\"col-sm-6\">
+                                                        "+content.details.content+"
+                                                    </div>
+                                                </div>
+                                            </div>";
+                    break;
+
+                    case 'Image Left':
+                        contentWithLayout+="<div class=\"Image-Left row\">
+                                                <div class=\"col-sm-6\">
+                                                    <img src=\"http://via.placeholder.com/350x150\">
+                                                </div>
+                                                <div class=\"col-sm-6\">
+                                                    <div class=\"title\">
+                                                        "+content.details.title+"
+                                                    </div>
+                                                    <div class=\"content\">
+                                                        "+content.details.content+"
+                                                    </div>
+                                                </div>
+                                            </div>";
+                    break;
+
+                    case 'Image Right':
+                        contentWithLayout+="<div class=\"Image-Right row\">
+                                                <div class=\"col-sm-6\">
+                                                    <div class=\"title\">
+                                                        "+content.details.title+"
+                                                    </div>
+                                                    <div class=\"content\">
+                                                        "+content.details.content+"
+                                                    </div>
+                                                </div>
+                                                <div class=\"col-sm-6\">
+                                                    <img src=\"http://via.placeholder.com/380x220\">
+                                                </div>
+                                            </div>";
+                    break;
+
+                    case 'Image(s)':
+                        contentWithLayout+="<div class=\"Images row\">
+                                                <div class=\"title col-sm-12\">
+                                                    "+content.details.title+"
+                                                </div>
+                                                <div class=\"image col-sm-12\">
+                                                    <img src=\"http://via.placeholder.com/750x200\">
+                                                </div>
+                                                <div class=\"description col-sm-12\">
+                                                    "+content.details.content+"
+                                                </div>
+                                            </div>";
+                    break;
+                    case 'Quote':
+                        contentWithLayout+="<div class=\"Quote row\">
+                                            <div class=\"col-sm-1\">
+                                                quote
+                                            </div>
+                                            <div class=\"content col-sm-10\">
+                                                "+content.details.content+"
+                                            </div>
+                                            <div class=\"col-sm-1\">
+                                                quote
+                                            </div>
+                                            <div class=\"author col-sm-2 pull-right\">
+                                                "+content.details.title+"
+                                            </div>
+                                            </div>";
+                    break;
+                    default:
+                    contentWithLayout+="";
+                }
+            });
+
+
+            contentWithLayout+="]]></dynamic-content> </dynamic-element> </root>";
+
+             Liferay.Service(
+                '/journal.journalarticle/add-article',
+                {
+                p_auth: 'Alr32l9u',
+                groupId: 20143,
+                folderId: 0,
+                classNameId: 0,
+                classPK: 0,
+                articleId: '',
+                autoArticleId: true,
+                titleMap: "{\"en_US\": \""+formData.title+"\"}",
+                descriptionMap: "{\"en_US\": \"Description\"}",
+                content: contentWithLayout,
+                ddmStructureKey: 'BASIC-WEB-CONTENT',
+                ddmTemplateKey: 'BASIC-WEB-CONTENT',
+                layoutUuid: '',
+                displayDateMonth: 6,
+                displayDateDay: 1,
+                displayDateYear: 2017,
+                displayDateHour: 1,
+                displayDateMinute: 30,
+                expirationDateMonth: 0,
+                expirationDateDay: 0,
+                expirationDateYear: 0,
+                expirationDateHour: 0,
+                expirationDateMinute: 0,
+                neverExpire: true,
+                reviewDateMonth: 0,
+                reviewDateDay: 0,
+                reviewDateYear: 0,
+                reviewDateHour: 0,
+                reviewDateMinute: 0,
+                neverReview: true,
+                indexable: true,
+                articleURL: ''
+                },
+                div_hide(),
+            );
+
+
+            setTimeout("location.reload(true);",2000);
+
+        }
+
+
+        render() {
+            return (
+            <div className='article'>
+                <form className="donationForm" onSubmit={this.handleSubmit.bind(this)}>
+                    <ReactBootstrap.Grid>
+                        <ReactBootstrap.Row>
+                            {this.state.sessionIds.length > 0 ?
+                            <ReactBootstrap.Col xs={12}>
+                                <button type="submit" value="Submit" className='save-btn' >
+                                    SAVE & PREVIEW
+                                </button>
+                            </ReactBootstrap.Col> : null}
+                            <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                                <div className='input-title'>
+                                    Article Title
+                                </div>
+                            </ReactBootstrap.Col>
+                            <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                                <input className='input-style' type='text' value={this.state.title} placeholder='Title of article here...' onChange={this.changeTitle.bind(this)}/>
+                            </ReactBootstrap.Col>
+                        </ReactBootstrap.Row>
+                        <ReactBootstrap.Row>
+                            <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2} smOffset={2} sm={4} >
+                                <div className='input-title'>
+                                    Slug
+                                </div>
+                                <div>
+                                    <input className='input-style' type='text' value={this.state.slug} placeholder='First name...' onChange={this.changeSlug.bind(this)}/>
+                                </div>
+                            </ReactBootstrap.Col>
+                            <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2} smOffset={0} sm={4}>
+                                <div className='input-title'>
+                                    Featured Image
+                                </div>
+                                <div>
+                                    <input className='input-style' disabled='disabled' placeholder='Drag & Drop or...' value={this.state.files}/>
+                                </div>
+                                <div>
+                                    <label className='custom-file-input'>
+                                        <input type='file'  onChange={this.changeFiles.bind(this)} />
+                                    </label>
+                                </div>
+                            </ReactBootstrap.Col>
+                        </ReactBootstrap.Row>
+                    </ReactBootstrap.Grid>
+
+                    { this.state.errors && <Message data={this.state}/> }
+                    { this.state.count !== 0 && this.renderRemainders() }
+                    <div className='bottom-block'>
+                        <div className='add-new-content'>
+                            <div className='add-btn' onClick={() => {
+                                let title = this.state.title;
+                                let slug = this.state.slug;
+                                if(title && slug){
+                                    this.addContent();
+                                } else {
+                                    this.messageInfo();
+                                }
+                            }}></div>
+                        </div>
+                        <p className='add-content'>
+                            ADD CONTENT
+                        </p>
+                    </div>
+                </form>
+            </div>
+            );
+        }
+    }
+
+
+    class Layout extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                choosen: [],
+                layouts: [],
+            };
+        }
+
+        chooseLayout(x, y) {
+            this.setState({
+                choosen: { title: x, uploaded: y },
+            });
+        }
+
+
+
+        componentWillMount(){
+            this.setState(
+            {
+                layouts: [
+                    { title: 'Call To Action', classname:'calltoaction', uploaded: false },
+                    { title: 'Facebook Feed', classname:'facebook', uploaded: false },
+                    { title: 'Content Grid', classname:'grid', uploaded: true },
+                    { title: 'Image(s)', classname:'imagefull', uploaded: true },
+                    { title: 'Image Left', classname:'imageleft', uploaded: true },
+                    { title: 'Image Right', classname:'imageright', uploaded: true },
+                    { title: 'Quote', classname:'quote', uploaded: false },
+                    { title: 'Title & Text', classname:'titletext', uploaded: false },
+                    { title: 'Twitter Feed', classname:'twitter', uploaded: true },
+                    { title: 'Two Column Text', classname:'twocolumn', uploaded: false },
+                ],
+                choosen: { title:'', uploaded: false },
+            });
+        }
+
+        render() {
+            return (
+            <div>
+            { this.state.choosen.title ==='' &&
+            <div>
+                <div className='layout-block' id={this.props.id}>
+                    <ReactBootstrap.Grid>
+                        <ReactBootstrap.Row>
+                            <ReactBootstrap.Col className='title-layout'>
+                                Choose your layout style
+                            </ReactBootstrap.Col>
+                        </ReactBootstrap.Row>
+                        <ReactBootstrap.Row>
+                            <ReactBootstrap.Col className='layoutlist'>
+                            { this.state.layouts.map((item,index) => {
+                                let m = index === 0 || index === 5 ? 1 : 0;
+                                let n = index === 9 ? 4 : 0;
+                                let q = index % 2 === 0 ? 1 : 0;
+                                return (
+                                <ReactBootstrap.Col key={index} lgOffset={m} lg={2} xsOffset={q} xs={5} mdOffset={n} md={4}>
+                                    <div className='layout-icon-style' onClick={ () => this.chooseLayout(item.title, item.uploaded) }>
+                                        <div>
+                                            <div className={item.classname}></div>
+                                            <div className='layout-title'>
+                                                {item.title}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ReactBootstrap.Col>
+                                );
+                            })}
+                            </ReactBootstrap.Col>
+                        </ReactBootstrap.Row>
+                    </ReactBootstrap.Grid>
+                </div>
+            </div>}
+            { this.state.choosen.title !== '' && <Section formDataRetrive={ this.props.formDataRetrive } removeContent={ this.props.removeContent } data={ { choosen:this.state.choosen, id:this.props.id } }/> }
+            </div>
+            );
+        }
+    }
+
+
+    class Section extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                image:'',
+                layout: '',
+                sectionData:{title:'', content:'', image:''}
+            };
+        }
+
+        changeImage(event) {
+            this.setState({ image: event.target.value });
+        }
+
+        delete() {
+            this.props.removeContent();
+        }
+
+        componentWillMount(){
+          this.setState({ layout: this.props.data.choosen.title });
+        }
+
+        changeInput(event) {
+            this.state.sectionData[event.target.name] = event.target.value;
+            this.setState({ sectionData: this.state.sectionData });
+            this.props.formDataRetrive(this.props.data.id, this.state.sectionData, this.state.layout);
+        }
+
+        render() {
+
+        return (
+        <div>
+            <div className='section-block' id={this.props.data.id}>
+                <ReactBootstrap.Grid>
+                    <ReactBootstrap.Row className='section-title'>
+                        <ReactBootstrap.Col xsOffset={4} xs={4} className='title-section'>
+                            { this.props.data.choosen.title }
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xs={4}>
+                            <div className='delete-btn' onClick={ () => this.delete() }>
+                                DELETE SECTION
+                            </div>
+                        </ReactBootstrap.Col>
+                    </ReactBootstrap.Row>
+                    { this.props.data.choosen.title !=='Image(s)' &&
+                    <ReactBootstrap.Row>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <div className='input-title'>
+                                Section Title
+                            </div>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <input name='title' className='input-style' type='text' value={this.state.sectionData.title} placeholder='Title of article here...' onChange={this.changeInput.bind(this)}/>
+                        </ReactBootstrap.Col>
+                    </ReactBootstrap.Row>}
+                    { this.props.data.choosen.title !=='Image(s)' &&
+                    <ReactBootstrap.Row>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <div className='input-title'>
+                                Content
+                            </div>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <textarea name='content' className='section-content' value={this.state.sectionData.content} type='text' placeholder='Your content goes here...' onChange={this.changeInput.bind(this)}/>
+                        </ReactBootstrap.Col>
+                    </ReactBootstrap.Row>}
+                    {this.props.data.choosen.uploaded &&
+                    <ReactBootstrap.Row>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <div className='input-title'>
+                                Image
+                            </div>
+                            <div>
+                                <input className='input-style' disabled='disabled' value={this.state.sectionData.image} placeholder='Drag & Drop or...'/>
+                            </div>
+                            <div>
+                                <label className='custom-file-input'>
+                                    <input name='image' type='file' onChange={ this.changeInput.bind(this) }/>
+                                </label>
+                            </div>
+                        </ReactBootstrap.Col>
+                    </ReactBootstrap.Row>}
+                </ReactBootstrap.Grid>
+            </div>
+        </div>
+        );
+        }
+    }
+
+
+    class Message extends React.Component {
+        render() {
+            return (
+                <div className='message'>
+                    <ReactBootstrap.Alert bsStyle="danger">
+                        { this.props.data.title ==='' ? <div>Please input title!</div> : '' }
+                        { this.props.data.slug ==='' ?  <div>Please input slug!</div> : '' }
+                    </ReactBootstrap.Alert>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(
+      <Home />,
+      document.getElementById('root')
+    );
+</script>
+
+
+
+
+<div id="popup">
+    <button id = "x" onclick="div_hide()">
+        X
+    </button>
+   <div id="root" ></div>
+</div>
+
+<button onclick="div_show()">Edit Article</button>
