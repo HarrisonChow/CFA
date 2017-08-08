@@ -861,11 +861,9 @@
         }
 
 
-
         componentWillMount(){
-        console.log(this.props.currentData);
             let layoutClass = this.props.currentData ? this.props.currentData.layout.replace(/-/g, ' ') : '';
-            let display = this.props.currentData.layout ? true : false;
+            let display = this.props.currentData ? true : false;
 
             this.setState(
             {
