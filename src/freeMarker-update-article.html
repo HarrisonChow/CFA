@@ -485,14 +485,14 @@
     function contentAll(allContents){
         let contentWithLayout = '';
         allContents.forEach(function(element) {
-            switch (element.details.layout) {
-                case 'Title & Text':
+            switch (element.layout) {
+                case 'Title Text':
                     contentWithLayout+="<div class=\"Title-Text row\">
                                             <div class=\"Title-Text-title col-sm-12\">
-                                                "+element.details.title+"
+                                                "+element.title+"
                                             </div>
                                             <div class=\"Title-Text-content col-sm-12\">
-                                                "+element.details.content+"
+                                                "+element.content+"
                                             </div>
                                         </div>";
                 break;
@@ -500,14 +500,14 @@
                 case 'Two Column Text':
                     contentWithLayout+="<div class=\"Two-Column-Text row\">
                                             <div class=\"Two-Column-Text-title col-sm-12\">
-                                                "+element.details.title+"
+                                                "+element.title+"
                                             </div>
                                             <div class=\"col-sm-12 row\">
                                                 <div class=\"contentLeft col-sm-6\">
-                                                    "+element.details.content+"
+                                                    "+element.content+"
                                                 </div>
                                                 <div class=\"contentRight col-sm-6\">
-                                                    "+element.details.contentright+"
+                                                    "+element.contentright+"
                                                 </div>
                                             </div>
                                         </div>";
@@ -520,10 +520,10 @@
                                             </div>
                                             <div class=\"col-sm-6\">
                                                 <div class=\"title\">
-                                                    "+element.details.title+"
+                                                    "+element.title+"
                                                 </div>
                                                 <div class=\"content\">
-                                                    "+element.details.content+"
+                                                    "+element.content+"
                                                 </div>
                                             </div>
                                         </div>";
@@ -533,10 +533,10 @@
                     contentWithLayout+="<div class=\"Image-Right row\">
                                             <div class=\"col-sm-6\">
                                                 <div class=\"title\">
-                                                    "+element.details.title+"
+                                                    "+element.title+"
                                                 </div>
                                                 <div class=\"content\">
-                                                    "+element.details.content+"
+                                                    "+element.content+"
                                                 </div>
                                             </div>
                                             <div class=\"col-sm-6\">
@@ -548,13 +548,13 @@
                 case 'Image(s)':
                     contentWithLayout+="<div class=\"Images row\">
                                             <div class=\"title col-sm-12\">
-                                                "+element.details.title+"
+                                                "+element.title+"
                                             </div>
                                             <div class=\"image col-sm-12\">
                                                 <img src=\"http://via.placeholder.com/750x200\">
                                             </div>
                                             <div class=\"description col-sm-12\">
-                                                "+element.details.content+"
+                                                "+element.content+"
                                             </div>
                                         </div>";
                 break;
@@ -565,13 +565,13 @@
                                             quote
                                         </div>
                                         <div class=\"content col-sm-10\">
-                                            "+element.details.content+"
+                                            "+element.content+"
                                         </div>
                                         <div class=\"col-sm-1\">
                                             quote
                                         </div>
                                         <div class=\"author col-sm-2 pull-right\">
-                                            "+element.details.title+"
+                                            "+element.title+"
                                         </div>
                                         </div>";
                 break;
@@ -649,38 +649,36 @@
 
                 this.setState({existContent: currentContent});
 
-                let layouts = ['Call-To-Action','Facebook-Feed','Content-Grid','Images','Image-Left','Image-Right','Quote','Title-Text','Twitter-Feed','Two-Column-Text'];
-
-                let currentLayout = [];
-
                 let contentHtml = new DOMParser().parseFromString(currentContent, 'text/html');
                 let childrenList = contentHtml.querySelector('div').children;
 
                 let results = [];
                 for(let i = 0; i < childrenList.length; i++){
-                    let childName = childrenList[i].className;
-                    if (/Title-Text/.test(childName)){
-                      results.push({
-                        layout: 'Title-Text',
-                        title: childrenList[i].querySelector('.Title-Text-title').textContent,
-                        content: childrenList[i].querySelector('.Title-Text-content').textContent
-                        });
-                    } else if(/Two-Column-Text/.test(childName)){
-                      results.push({
-                        layout: 'Two-Column-Text',
-                        title : childrenList[i].querySelector('.Two-Column-Text-title').textContent,
-                        contentleft : childrenList[i].querySelector('.contentLeft').textContent,
-                        contentright : childrenList[i].querySelector('.contentRight').textContent
-                      });
-                    }
+                      let childName = childrenList[i].className;
+                      if (/Title-Text/.test(childName)){
+                          results.push({
+                              id: 'id'+i,
+                              layout: 'Title Text',
+                              title: childrenList[i].querySelector('.Title-Text-title').textContent,
+                              content: childrenList[i].querySelector('.Title-Text-content').textContent
+                          });
+                      } else if(/Two-Column-Text/.test(childName)){
+                          results.push({
+                              id: 'id'+i,
+                              layout: 'Two Column Text',
+                              title : childrenList[i].querySelector('.Two-Column-Text-title').textContent,
+                              contentleft : childrenList[i].querySelector('.contentLeft').textContent,
+                              contentright : childrenList[i].querySelector('.contentRight').textContent
+                          });
+                      }
                 }
                 this.setState({existLayout:results});
 
                 let currentSessionIds =  Array.from(new Array(results.length),(val,index)=>'id'+index);
 
-              if(currentContent){
-                this.setState({sessionIds:currentSessionIds});
-              }
+                if(currentContent){
+                    this.setState({sessionIds:currentSessionIds});
+                }
         }
         addContent(){
             const sessionIds = this.state.sessionIds;
@@ -701,7 +699,7 @@
 
                 if(newId > 0 && newId <= this.state.existLayout.length){
                     return(
-                        <Layout removeContent={() => this.removeContent(id)} currentData = {this.state.existLayout[newId-1]} formDataRetrive={this.formDataRetrive} key={id} id={id}/>
+                          <Layout removeContent={() => this.removeContent(id)} currentData = {this.state.existLayout[newId-1]} formDataRetrive={this.formDataRetrive} key={id} id={id}/>
                     );
                 } else {
                     return(
@@ -711,10 +709,10 @@
             });
         }
 
-        formDataRetrive(id, info){
+        formDataRetrive(info){
 
             const sectionsData = this.state.sectionsData;
-            sectionsData.push({'id':id, 'details':info});
+            sectionsData.push(info);
             var finalresult = [];
             var filter = [];
             for (var i=0; i<sectionsData.length;i++) {
@@ -752,25 +750,61 @@
                 sections: this.state.sectionsData
             };
 
-            let FinalContent = this.state.existContent + contentAll(formData.sections);
+            let existContent = this.state.existLayout;
 
+            let combinedContent;
+            if(existContent.length > 0){
+                const toDelete = new Set(this.state.sessionIds);
+                const leftContent = existContent.filter(obj => toDelete.has(obj.id));
+
+                if(formData.sections.length > 0){
+                    let filterDuplicateContent=[];
+                    formData.sections.forEach(function(element) {
+                        filterDuplicateContent = leftContent.filter(item=>item.id !=element.id );
+                        return filterDuplicateContent;
+                    });
+                    combinedContent = filterDuplicateContent.concat(formData.sections);
+                } else {
+                    combinedContent = leftContent;
+                }
+            } else {
+                if(formData.sections){
+                    combinedContent = formData.sections;
+                } else {
+                    combinedContent = [];
+                }
+            }
+
+            function dynamicSort(property) {
+               return function(a, b) {
+                   return (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+               }
+            }
+            combinedContent.sort(dynamicSort('id'));
+
+            let FinalContent = contentAll(combinedContent);
 
             Liferay.Service(
-              '/journal.journalarticle/update-article',
-              {
-                userId: ${article.getUserId()},
-                groupId: ${article.getGroupId()},
-                folderId: ${article.getFolderId()},
-                articleId: ${article.getArticleId()},
-                version: ${article.getVersion()},
-                titleMap: {"en_US": formData.title},
-                descriptionMap: {"en_US": "reading....."},
-                content: "<?xml version=\"1.0\"?> <root available-locales=\"en_US\" default-locale=\"en_US\"> <dynamic-element name=\"content\" type=\"text_area\" index-type=\"text\" instance-id=\"sntb\"> <dynamic-content language-id=\"en_US\"> <![CDATA[<div>"+FinalContent+"</div>]]></dynamic-content> </dynamic-element> </root>",
-                layoutUuid: ''
-              },
-              div_hide(),
+                '/journal.journalarticle/update-article',
+                {
+                    userId: ${article.getUserId()},
+                    groupId: ${article.getGroupId()},
+                    folderId: ${article.getFolderId()},
+                    articleId: ${article.getArticleId()},
+                    version: ${article.getVersion()},
+                    titleMap: {"en_US": formData.title},
+                    descriptionMap: {"en_US": "reading....."},
+                    content: "<?xml version=\"1.0\"?> <root available-locales=\"en_US\" default-locale=\"en_US\"> <dynamic-element name=\"content\" type=\"text_area\" index-type=\"text\" instance-id=\"sntb\"> <dynamic-content language-id=\"en_US\"> <![CDATA[<div>"+FinalContent+"</div>]]></dynamic-content> </dynamic-element> </root>",
+                    layoutUuid: ''
+                },
+                div_hide(),
 
             );
+
+
+
+
+
         }
 
 
@@ -875,7 +909,7 @@
                     { title: 'Image Left', classname:'imageleft', uploaded: true },
                     { title: 'Image Right', classname:'imageright', uploaded: true },
                     { title: 'Quote', classname:'quote', uploaded: false },
-                    { title: 'Title & Text', classname:'titletext', uploaded: false },
+                    { title: 'Title Text', classname:'titletext', uploaded: false },
                     { title: 'Twitter Feed', classname:'twitter', uploaded: true },
                     { title: 'Two Column Text', classname:'twocolumn', uploaded: false },
                 ],
@@ -932,17 +966,18 @@
             super();
             this.state = {
                 image:'',
-                sectionData:{title:'', content:'', contentright:'', image:'', layout: ''},
+                sectionData:{id:'', title:'', content:'', contentright:'', image:'', layout: ''},
 
             };
         }
         componentWillMount(){
           if(this.props.currentda) {
+            let id = this.props.data.id;
             let title = this.props.currentda.title;
             let content = this.props.currentda.layout.replace(/-/g, ' ') === 'Two Column Text' ? this.props.currentda.contentleft : this.props.currentda.content;
             let contentright = this.props.currentda.layout.replace(/-/g, ' ') === 'Two Column Text' ? this.props.currentda.contentright : [];
 
-            this.setState({ sectionData: {title: title, content: content, contentright: contentright} });
+            this.setState({ sectionData: {id: id, title: title, content: content, contentright: contentright} });
           }
         }
 
@@ -957,8 +992,9 @@
         changeInput(event) {
             this.state.sectionData[event.target.name] = event.target.value;
             this.state.sectionData['layout'] = this.props.data.choosen.title;
+            this.state.sectionData['id'] = this.props.data.id;
             this.setState({ sectionData: this.state.sectionData});
-            this.props.formDataRetrive(this.props.data.id, this.state.sectionData);
+            this.props.formDataRetrive(this.state.sectionData);
         }
 
         render() {
