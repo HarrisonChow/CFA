@@ -1,4 +1,19 @@
+
 <style type="text/css">
+
+    .Title-Text-title, .Two-Column-Text-title, .Image-Right-title, .Image-Left-title, .Images-title {
+        font-family: Montserrat;
+        font-size: 18px;
+        color: #ca1323;
+        margin-bottom: 0.5rem;
+    }
+    .Two-Column-Text-content, .Title-Text-content, .Quote-content {
+        font-family: Montserrat;
+        font-size: 14px;
+        font-weight: 300;
+        color: #343441;
+    }
+
 
     #popup {
         width: 100%;
@@ -10,6 +25,7 @@
         position: fixed;
         background-color: rgba(255, 255, 255, 0.0);
         overflow: auto;
+        z-index:99;
     }
 
     hr {
@@ -428,28 +444,22 @@
     }
 
 </style>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" >
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
 <script>
     define._amd = define.amd;
     define.amd = false;
 </script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.31.1/react-bootstrap.min.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 
 <script>
     define.amd = define._amd;
 </script>
-
-
-
 
 <script type='text/babel'>
 
@@ -458,6 +468,254 @@
     }
     function div_hide(){
         document.getElementById('popup').style.display = "none";
+    }
+
+    function addContentAll(allContents){
+        let contentWithLayout="<?xml version=\"1.0\"?> <root available-locales=\"en_US\" default-locale=\"en_US\"> <dynamic-element name=\"content\" type=\"text_area\" index-type=\"text\" instance-id=\"sntb\"> <dynamic-content language-id=\"en_US\"> <![CDATA[";
+        allContents.forEach(function(element) {
+            switch (element.layout) {
+                case 'Title Text':
+                    contentWithLayout+="<div class=\"Title-Text row\">
+                                            <div class=\"Title-Text-title col-sm-12\">
+                                                "+element.title+"
+                                            </div>
+                                            <div class=\"Title-Text-content col-sm-12\">
+                                                "+element.content+"
+                                            </div>
+                                        </div>";
+                break;
+
+                case 'Two Column Text':
+                    contentWithLayout+="<div class=\"Two-Column-Text row\">
+                                            <div class=\"Two-Column-Text-title col-sm-12\">
+                                                "+element.title+"
+                                            </div>
+                                            <div class=\"col-sm-12 row\">
+                                                <div class=\"contentLeft col-sm-6\">
+                                                    "+element.content+"
+                                                </div>
+                                                <div class=\"contentRight col-sm-6\">
+                                                    "+element.contentright+"
+                                                </div>
+                                            </div>
+                                        </div>";
+                break;
+
+                case 'Image Left':
+                    contentWithLayout+="<div class=\"Image-Left row\">
+                                            <div class=\"Image-Left-image col-sm-6\">
+                                                <img src=\"http://via.placeholder.com/350x150\">
+                                            </div>
+                                            <div class=\"col-sm-6\">
+                                                <div class=\"Image-Left-title\">
+                                                    "+element.title+"
+                                                </div>
+                                                <div class=\"Image-Left-content\">
+                                                    "+element.content+"
+                                                </div>
+                                            </div>
+                                        </div>";
+                break;
+
+                case 'Image Right':
+                    contentWithLayout+="<div class=\"Image-Right row\">
+                                            <div class=\"col-sm-6\">
+                                                <div class=\"Image-Right-title\">
+                                                    "+element.title+"
+                                                </div>
+                                                <div class=\"Image-Right-content\">
+                                                    "+element.content+"
+                                                </div>
+                                            </div>
+                                            <div class=\"Image-Right-image col-sm-6\">
+                                                <img src=\"http://via.placeholder.com/380x220\">
+                                            </div>
+                                        </div>";
+                break;
+
+                case 'Image(s)':
+                    contentWithLayout+="<div class=\"Images row\">
+                                            <div class=\"Images-title col-sm-12\">
+                                                "+element.title+"
+                                            </div>
+                                            <div class=\"Images-image col-sm-12\">
+                                                <img src=\"http://via.placeholder.com/750x200\">
+                                            </div>
+                                            <div class=\"Images-content col-sm-12\">
+                                                "+element.content+"
+                                            </div>
+                                        </div>";
+                break;
+
+                case 'Quote':
+                    contentWithLayout+="<div class=\"Quote row\">
+                                        <div class=\"col-sm-1\">
+                                            quote
+                                        </div>
+                                        <div class=\"Quote-content col-sm-10\">
+                                            "+element.content+"
+                                        </div>
+                                        <div class=\"col-sm-1\">
+                                            quote
+                                        </div>
+                                        <div class=\"Quote-author col-sm-2 pull-right\">
+                                            "+element.title+"
+                                        </div>
+                                        </div>";
+                break;
+
+                case 'Call To Action':
+                    contentWithLayout+="<div class=\"Call-To-Action row\">
+                                        <div class=\"col-sm-10\">
+                                          <div class=\"Call-To-Action-title col-sm-12\">
+                                              "+element.title+"
+                                          </div>
+                                          <div class=\"Call-To-Action-content col-sm-12\">
+                                              "+element.content+"
+                                          </div>
+                                        </div>
+                                        <div class=\"col-sm-2\">
+                                          <a href=\""+ element.buttonLink+"\" class=\"btn btn-default\">"+ element.buttonValue+"</a>
+                                        </div>
+                                        </div>";
+                break;
+
+                case 'Content Grid':
+                    contentWithLayout+="<div class=\"Content-Grid row\">
+                                        <div class=\"col-sm-4\">
+                                          <div class=\"Content-Grid-title row\">
+                                              "+element.title+"
+                                          </div>
+                                          <div class=\"Content-Grid-content row\">
+                                              "+element.content+"
+                                          </div>
+                                        </div>
+                                        <div class=\"col-sm-4\">
+                                          <div class=\"Content-Grid-title row\">
+                                              "+element.title+"
+                                          </div>
+                                          <div class=\"Content-Grid-content row\">
+                                              "+element.content+"
+                                          </div>
+                                        </div>
+                                        <div class=\"col-sm-4\">
+                                          <div class=\"Content-Grid-title row\">
+                                              "+element.title+"
+                                          </div>
+                                          <div class=\"Content-Grid-content row\">
+                                              "+element.content+"
+                                          </div>
+                                        </div>
+                                        </div>";
+                break;
+
+                default:
+                contentWithLayout+="";
+            }
+        });
+        contentWithLayout+="]]></dynamic-content> </dynamic-element> </root>";
+        return contentWithLayout;
+    }
+
+    function contentAll(allContents){
+        let contentWithLayout = '';
+        allContents.forEach(function(element) {
+            switch (element.layout) {
+                case 'Title Text':
+                    contentWithLayout+="<div class=\"Title-Text row\">
+                                            <div class=\"Title-Text-title col-sm-12\">
+                                                "+element.title+"
+                                            </div>
+                                            <div class=\"Title-Text-content col-sm-12\">
+                                                "+element.content+"
+                                            </div>
+                                        </div>";
+                break;
+
+                case 'Two Column Text':
+                    contentWithLayout+="<div class=\"Two-Column-Text row\">
+                                            <div class=\"Two-Column-Text-title col-sm-12\">
+                                                "+element.title+"
+                                            </div>
+                                            <div class=\"col-sm-12 row\">
+                                                <div class=\"contentLeft col-sm-6\">
+                                                    "+element.content+"
+                                                </div>
+                                                <div class=\"contentRight col-sm-6\">
+                                                    "+element.contentright+"
+                                                </div>
+                                            </div>
+                                        </div>";
+                break;
+
+                case 'Image Left':
+                    contentWithLayout+="<div class=\"Image-Left row\">
+                                            <div class=\"Image-Left-image col-sm-6\">
+                                                <img src=\"http://via.placeholder.com/350x150\">
+                                            </div>
+                                            <div class=\"col-sm-6\">
+                                                <div class=\"Image-Left-title\">
+                                                    "+element.title+"
+                                                </div>
+                                                <div class=\"Image-Left-content\">
+                                                    "+element.content+"
+                                                </div>
+                                            </div>
+                                        </div>";
+                break;
+
+                case 'Image Right':
+                    contentWithLayout+="<div class=\"Image-Right row\">
+                                            <div class=\"col-sm-6\">
+                                                <div class=\"Image-Right-title\">
+                                                    "+element.title+"
+                                                </div>
+                                                <div class=\"Image-Right-content\">
+                                                    "+element.content+"
+                                                </div>
+                                            </div>
+                                            <div class=\"Image-Right-image col-sm-6\">
+                                                <img src=\"http://via.placeholder.com/380x220\">
+                                            </div>
+                                        </div>";
+                break;
+
+                case 'Image(s)':
+                    contentWithLayout+="<div class=\"Images row\">
+                                            <div class=\"Images-title col-sm-12\">
+                                                "+element.title+"
+                                            </div>
+                                            <div class=\"Images-image col-sm-12\">
+                                                <img src=\"http://via.placeholder.com/750x200\">
+                                            </div>
+                                            <div class=\"Images-content col-sm-12\">
+                                                "+element.content+"
+                                            </div>
+                                        </div>";
+                break;
+
+                case 'Quote':
+                    contentWithLayout+="<div class=\"Quote row\">
+                                        <div class=\"col-sm-1\">
+                                            quote
+                                        </div>
+                                        <div class=\"Quote-content col-sm-10\">
+                                            "+element.content+"
+                                        </div>
+                                        <div class=\"col-sm-1\">
+                                            quote
+                                        </div>
+                                        <div class=\"Quote-author col-sm-2 pull-right\">
+                                            "+element.title+"
+                                        </div>
+                                        </div>";
+                break;
+
+                default:
+                contentWithLayout+="";
+            }
+        });
+        return contentWithLayout;
     }
 
     class Home extends React.Component {
@@ -512,31 +770,47 @@
                 slug: '',
                 errors: false,
                 sessionIds: [],
-                sectionsData: []
+                sectionsData: [],
+                existLayout:[],
+                existContent:'',
+                currentData:[]
             };
         }
 
 
         addContent(){
             const sessionIds = this.state.sessionIds;
-            const id = sessionIds.length ? sessionIds[sessionIds.length - 1] + 1 : 0;
-            sessionIds.push(id);
+            const id = sessionIds.length ? sessionIds.length : 0;
+            sessionIds.push("id" + id);
             this.setState({sessionIds});
         }
         removeContent(id){
             const sessionIds = this.state.sessionIds;
+            const existLayout = this.state.existLayout;
             this.setState({sessionIds: sessionIds.filter((sessionId) => id !== sessionId)});
+            this.setState({existLayout: existLayout.filter((index) => {return id !== index;})});
         }
         renderRemainders() {
             const sessionIds = this.state.sessionIds;
-            return sessionIds.map((id) => (
-            <Layout removeContent={() => this.removeContent(id)} formDataRetrive={this.formDataRetrive} key={id} id={id}/>
-            ));
+            return sessionIds.map((id) => {
+                let newId = parseInt(id.match(/\d+/)[0], 10)+1;
+
+                if(newId > 0 && newId <= this.state.existLayout.length){
+                    return(
+                          <Layout removeContent={() => this.removeContent(id)} currentData = {this.state.existLayout[newId-1]} formDataRetrive={this.formDataRetrive} key={id} id={id}/>
+                    );
+                } else {
+                    return(
+                        <Layout removeContent={() => this.removeContent(id)} formDataRetrive={this.formDataRetrive} key={id} id={id}/>
+                    );
+                }
+            });
         }
 
-        formDataRetrive(id, info, layout){
+        formDataRetrive(info){
+
             const sectionsData = this.state.sectionsData;
-            sectionsData.push({'id':id, 'details':info, 'layout':layout});
+            sectionsData.push(info);
             var finalresult = [];
             var filter = [];
             for (var i=0; i<sectionsData.length;i++) {
@@ -574,148 +848,83 @@
                 sections: this.state.sectionsData
             };
 
-            let allContents = this.state.sectionsData;
-            let contentWithLayout="<?xml version=\"1.0\"?> <root available-locales=\"en_US\" default-locale=\"en_US\"> <dynamic-element name=\"content\" type=\"text_area\" index-type=\"text\" instance-id=\"sntb\"> <dynamic-content language-id=\"en_US\"> <![CDATA[";
+            let existContent = this.state.existLayout;
 
-            allContents.forEach(function(content) {
-                switch (content.layout) {
-                    case 'Title & Text':
-                        contentWithLayout+="<div class=\"Title-Text row\">
-                                                <div class=\"title col-sm-12\">
-                                                    "+content.details.title+"
-                                                </div>
-                                                <div class=\"content col-sm-12\">
-                                                    "+content.details.content+"
-                                                </div>
-                                            </div>";
-                    break;
+            let combinedContent;
+            if(existContent.length > 0){
+                const toDelete = new Set(this.state.sessionIds);
+                const leftContent = existContent.filter(obj => toDelete.has(obj.id));
 
-                    case 'Two Column Text':
-                        contentWithLayout+="<div class=\"Two-Column-Text row\">
-                                                <div class=\"title col-sm-12\">
-                                                    "+content.details.title+"
-                                                </div>
-                                                <div class=\"col-sm-12 row\">
-                                                    <div class=\"col-sm-6\">
-                                                        "+content.details.content+"
-                                                    </div>
-                                                    <div class=\"col-sm-6\">
-                                                        "+content.details.content+"
-                                                    </div>
-                                                </div>
-                                            </div>";
-                    break;
-
-                    case 'Image Left':
-                        contentWithLayout+="<div class=\"Image-Left row\">
-                                                <div class=\"col-sm-6\">
-                                                    <img src=\"http://via.placeholder.com/350x150\">
-                                                </div>
-                                                <div class=\"col-sm-6\">
-                                                    <div class=\"title\">
-                                                        "+content.details.title+"
-                                                    </div>
-                                                    <div class=\"content\">
-                                                        "+content.details.content+"
-                                                    </div>
-                                                </div>
-                                            </div>";
-                    break;
-
-                    case 'Image Right':
-                        contentWithLayout+="<div class=\"Image-Right row\">
-                                                <div class=\"col-sm-6\">
-                                                    <div class=\"title\">
-                                                        "+content.details.title+"
-                                                    </div>
-                                                    <div class=\"content\">
-                                                        "+content.details.content+"
-                                                    </div>
-                                                </div>
-                                                <div class=\"col-sm-6\">
-                                                    <img src=\"http://via.placeholder.com/380x220\">
-                                                </div>
-                                            </div>";
-                    break;
-
-                    case 'Image(s)':
-                        contentWithLayout+="<div class=\"Images row\">
-                                                <div class=\"title col-sm-12\">
-                                                    "+content.details.title+"
-                                                </div>
-                                                <div class=\"image col-sm-12\">
-                                                    <img src=\"http://via.placeholder.com/750x200\">
-                                                </div>
-                                                <div class=\"description col-sm-12\">
-                                                    "+content.details.content+"
-                                                </div>
-                                            </div>";
-                    break;
-                    case 'Quote':
-                        contentWithLayout+="<div class=\"Quote row\">
-                                            <div class=\"col-sm-1\">
-                                                quote
-                                            </div>
-                                            <div class=\"content col-sm-10\">
-                                                "+content.details.content+"
-                                            </div>
-                                            <div class=\"col-sm-1\">
-                                                quote
-                                            </div>
-                                            <div class=\"author col-sm-2 pull-right\">
-                                                "+content.details.title+"
-                                            </div>
-                                            </div>";
-                    break;
-                    default:
-                    contentWithLayout+="";
+                if(formData.sections.length > 0){
+                    let filterDuplicateContent=[];
+                    formData.sections.forEach(function(element) {
+                        filterDuplicateContent = leftContent.filter(item=>item.id !=element.id );
+                        return filterDuplicateContent;
+                    });
+                    combinedContent = filterDuplicateContent.concat(formData.sections);
+                } else {
+                    combinedContent = leftContent;
                 }
-            });
+            } else {
+                if(formData.sections){
+                    combinedContent = formData.sections;
+                } else {
+                    combinedContent = [];
+                }
+            }
+
+            function dynamicSort(property) {
+               return function(a, b) {
+                   return (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+               }
+            }
+            combinedContent.sort(dynamicSort('id'));
+
+            let FinalContent = addContentAll(combinedContent);
+            console.log(FinalContent);
+
+            Liferay.Service(
+               '/journal.journalarticle/add-article',
+               {
+               p_auth: 'Alr32l9u',
+               groupId: 20143,
+               folderId: 0,
+               classNameId: 0,
+               classPK: 0,
+               articleId: '',
+               autoArticleId: true,
+               titleMap: "{\"en_US\": \""+formData.title+"\"}",
+               descriptionMap: "{\"en_US\": \"Description\"}",
+               content: FinalContent,
+               ddmStructureKey: 'BASIC-WEB-CONTENT',
+               ddmTemplateKey: 'BASIC-WEB-CONTENT',
+               layoutUuid: '',
+               displayDateMonth: 6,
+               displayDateDay: 1,
+               displayDateYear: 2017,
+               displayDateHour: 1,
+               displayDateMinute: 30,
+               expirationDateMonth: 0,
+               expirationDateDay: 0,
+               expirationDateYear: 0,
+               expirationDateHour: 0,
+               expirationDateMinute: 0,
+               neverExpire: true,
+               reviewDateMonth: 0,
+               reviewDateDay: 0,
+               reviewDateYear: 0,
+               reviewDateHour: 0,
+               reviewDateMinute: 0,
+               neverReview: true,
+               indexable: true,
+               articleURL: ''
+               },
+               div_hide(),
+           );
 
 
-            contentWithLayout+="]]></dynamic-content> </dynamic-element> </root>";
-
-             Liferay.Service(
-                '/journal.journalarticle/add-article',
-                {
-                p_auth: 'Alr32l9u',
-                groupId: 20143,
-                folderId: 0,
-                classNameId: 0,
-                classPK: 0,
-                articleId: '',
-                autoArticleId: true,
-                titleMap: "{\"en_US\": \""+formData.title+"\"}",
-                descriptionMap: "{\"en_US\": \"Description\"}",
-                content: contentWithLayout,
-                ddmStructureKey: 'BASIC-WEB-CONTENT',
-                ddmTemplateKey: 'BASIC-WEB-CONTENT',
-                layoutUuid: '',
-                displayDateMonth: 6,
-                displayDateDay: 1,
-                displayDateYear: 2017,
-                displayDateHour: 1,
-                displayDateMinute: 30,
-                expirationDateMonth: 0,
-                expirationDateDay: 0,
-                expirationDateYear: 0,
-                expirationDateHour: 0,
-                expirationDateMinute: 0,
-                neverExpire: true,
-                reviewDateMonth: 0,
-                reviewDateDay: 0,
-                reviewDateYear: 0,
-                reviewDateHour: 0,
-                reviewDateMinute: 0,
-                neverReview: true,
-                indexable: true,
-                articleURL: ''
-                },
-                div_hide(),
-            );
 
 
-            setTimeout("location.reload(true);",2000);
 
         }
 
@@ -767,7 +976,7 @@
                     </ReactBootstrap.Grid>
 
                     { this.state.errors && <Message data={this.state}/> }
-                    { this.state.count !== 0 && this.renderRemainders() }
+                    { this.renderRemainders() }
                     <div className='bottom-block'>
                         <div className='add-new-content'>
                             <div className='add-btn' onClick={() => {
@@ -807,8 +1016,10 @@
         }
 
 
-
         componentWillMount(){
+            let layoutClass = this.props.currentData ? this.props.currentData.layout.replace(/-/g, ' ') : '';
+            let display = this.props.currentData ? true : false;
+
             this.setState(
             {
                 layouts: [
@@ -819,11 +1030,11 @@
                     { title: 'Image Left', classname:'imageleft', uploaded: true },
                     { title: 'Image Right', classname:'imageright', uploaded: true },
                     { title: 'Quote', classname:'quote', uploaded: false },
-                    { title: 'Title & Text', classname:'titletext', uploaded: false },
+                    { title: 'Title Text', classname:'titletext', uploaded: false },
                     { title: 'Twitter Feed', classname:'twitter', uploaded: true },
                     { title: 'Two Column Text', classname:'twocolumn', uploaded: false },
                 ],
-                choosen: { title:'', uploaded: false },
+                choosen: { title:layoutClass, uploaded: display },
             });
         }
 
@@ -863,7 +1074,8 @@
                     </ReactBootstrap.Grid>
                 </div>
             </div>}
-            { this.state.choosen.title !== '' && <Section formDataRetrive={ this.props.formDataRetrive } removeContent={ this.props.removeContent } data={ { choosen:this.state.choosen, id:this.props.id } }/> }
+
+            { this.state.choosen.title !== '' && this.props.currentData ? <Section formDataRetrive={ this.props.formDataRetrive } currentda = {this.props.currentData} removeContent={ this.props.removeContent } data={ { choosen:this.state.choosen, id:this.props.id } }/> : this.state.choosen.title !== '' ? <Section formDataRetrive={ this.props.formDataRetrive } removeContent={ this.props.removeContent } data={ { choosen:this.state.choosen, id:this.props.id } }/> : '' }
             </div>
             );
         }
@@ -875,9 +1087,21 @@
             super();
             this.state = {
                 image:'',
-                layout: '',
-                sectionData:{title:'', content:'', image:''}
+                sectionData:{id:'', title:'', content:'', contentright:'', image:'', layout: '', buttonLink: '', buttonValue: ''},
+
             };
+        }
+        componentWillMount(){
+          if(this.props.currentda) {
+            let id = this.props.data.id;
+            let title = this.props.currentda.title;
+            let content = this.props.currentda.layout.replace(/-/g, ' ') === 'Two Column Text' ? this.props.currentda.contentleft : this.props.currentda.content;
+            let contentright = this.props.currentda.layout.replace(/-/g, ' ') === 'Two Column Text' ? this.props.currentda.contentright : [];
+            let buttonValue = this.props.currentda.layout.replace(/-/g, ' ') === 'Call To Action' ? this.props.currentda.buttonValue : [];
+            let buttonLink = this.props.currentda.layout.replace(/-/g, ' ') === 'Call To Action' ? this.props.currentda.buttonLink : [];
+
+            this.setState({ sectionData: {id: id, title: title, content: content, contentright: contentright} });
+          }
         }
 
         changeImage(event) {
@@ -888,18 +1112,15 @@
             this.props.removeContent();
         }
 
-        componentWillMount(){
-          this.setState({ layout: this.props.data.choosen.title });
-        }
-
         changeInput(event) {
             this.state.sectionData[event.target.name] = event.target.value;
-            this.setState({ sectionData: this.state.sectionData });
-            this.props.formDataRetrive(this.props.data.id, this.state.sectionData, this.state.layout);
+            this.state.sectionData['layout'] = this.props.data.choosen.title;
+            this.state.sectionData['id'] = this.props.data.id;
+            this.setState({ sectionData: this.state.sectionData});
+            this.props.formDataRetrive(this.state.sectionData);
         }
 
         render() {
-
         return (
         <div>
             <div className='section-block' id={this.props.data.id}>
@@ -936,6 +1157,41 @@
                             <textarea name='content' className='section-content' value={this.state.sectionData.content} type='text' placeholder='Your content goes here...' onChange={this.changeInput.bind(this)}/>
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>}
+
+                    { this.props.data.choosen.title ==='Call To Action' &&
+                    <ReactBootstrap.Row>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <div className='input-title'>
+                                Button Value
+                            </div>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <input name='buttonValue' className='input-style' type='text' value={this.state.sectionData.buttonValue} placeholder='Value of button here...' onChange={this.changeInput.bind(this)}/>
+
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <div className='input-title'>
+                                Button Link
+                            </div>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <input name='buttonLink' className='input-style' type='text' value={this.state.sectionData.buttonLink} placeholder='Link of button here...' onChange={this.changeInput.bind(this)}/>
+                        </ReactBootstrap.Col>
+                    </ReactBootstrap.Row>}
+
+                    { this.props.data.choosen.title ==='Two Column Text' &&
+                    <ReactBootstrap.Row>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <div className='input-title'>
+                                Right Content
+                            </div>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <textarea name='contentright' className='section-content' value={this.state.sectionData.contentright} type='text' placeholder='Your content goes here...' onChange={this.changeInput.bind(this)}/>
+                        </ReactBootstrap.Col>
+                    </ReactBootstrap.Row>}
+
+
                     {this.props.data.choosen.uploaded &&
                     <ReactBootstrap.Row>
                         <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
@@ -980,13 +1236,16 @@
 </script>
 
 
-
-
 <div id="popup">
     <button id = "x" onclick="div_hide()">
         X
     </button>
    <div id="root" ></div>
 </div>
+<div>
+
+</div>
+
+
 
 <button onclick="div_show()">Edit Article</button>
