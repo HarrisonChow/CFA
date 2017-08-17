@@ -1,18 +1,75 @@
 
 <style type="text/css">
 
-    .Title-Text-title, .Two-Column-Text-title, .Image-Right-title, .Image-Left-title, .Images-title {
-        font-family: Montserrat;
-        font-size: 18px;
-        color: #ca1323;
-        margin-bottom: 0.5rem;
-    }
-    .Two-Column-Text-content, .Title-Text-content, .Quote-content {
-        font-family: Montserrat;
-        font-size: 14px;
-        font-weight: 300;
-        color: #343441;
-    }
+.Title-Text, .Two-Column-Text, .Image-Right, .Image-Left, .Images, .Call-To-Action, .Content-Grid, .Quote {
+    margin: 25px 0;
+}
+.Title-Text-title, .Two-Column-Text-title, .Image-Right-title, .Image-Left-title, .Images-title, .Call-To-Action-title, .Content-Grid-title-one, .Content-Grid-title-two, .Content-Grid-title-three {
+    font-family: Montserrat;
+    font-size: 18px;
+    color: #ca1323;
+    margin-bottom: 0.5rem;
+}
+.content-Left, .content-Right, .Title-Text-content, .Quote-content, .Image-Right-content, .Image-Left-content, .Images-content, .Call-To-Action-content, .Content-Grid-content-one, .Content-Grid-content-two, .Content-Grid-content-three  {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 300;
+    color: #343441;
+}
+.Content-Grid-Image-one img, .Content-Grid-Image-two img, .Content-Grid-Image-three img {
+    width: 100%;
+    padding: 25px;
+    border-radius: 5px;
+}
+.Quotes {
+    display: flex;
+}
+.Quote-left {
+    background-image: url('http://localhost:8080/documents/20143/0/page-1.svg/2ca151f3-5192-beba-175a-422783126f84');
+    background-repeat: no-repeat;
+    background-position: top right;
+    flex: 1;
+}
+.Quote-right {
+    background-image: url('http://localhost:8080/documents/20143/0/page-1-copy-2.svg/f3e0a24c-700f-67b7-d284-7aa6795d2353');
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    flex: 1;
+}
+.Content-Grid-title-one, .Content-Grid-title-two, .Content-Grid-title-three, .Content-Grid-content-one, .Content-Grid-content-two, .Content-Grid-content-three  {
+    padding-left: 25px;
+}
+.Image-Right img, .Image-Left img, .Images img {
+    border-radius: 5px;
+    height: 220px;
+    width: 100%;
+}
+.Call-To-Action {
+    margin: 20px;
+}
+.borders {
+    border-radius: 5px;
+    border: solid 1px #ca1323;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 15px;
+}
+.callAction {
+    min-width: 127px;
+    height: 32px;
+    border-radius: 100px;
+    background-color: #ca1323;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    padding-top: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+.callAction a, .callAction a:hover  {
+    color: #ffffff;
+    text-decoration: none;
+}
 
 
     #popup {
@@ -474,98 +531,100 @@
         let contentWithLayout="<?xml version=\"1.0\"?> <root available-locales=\"en_US\" default-locale=\"en_US\"> <dynamic-element name=\"content\" type=\"text_area\" index-type=\"text\" instance-id=\"sntb\"> <dynamic-content language-id=\"en_US\"> <![CDATA[";
         allContents.forEach(function(element) {
             switch (element.layout) {
-                case 'Title Text':
-                    contentWithLayout+="<div class=\"Title-Text row\">
-                                            <div class=\"Title-Text-title col-sm-12\">
-                                                "+element.title+"
-                                            </div>
-                                            <div class=\"Title-Text-content col-sm-12\">
-                                                "+element.content+"
-                                            </div>
-                                        </div>";
-                break;
+              case 'Title Text':
+                  contentWithLayout+="<div class=\"Title-Text row\">
+                                          <div class=\"Title-Text-title col-sm-12\">
+                                              "+element.title+"
+                                          </div>
+                                          <div class=\"Title-Text-content col-sm-12\">
+                                              "+element.content+"
+                                          </div>
+                                      </div>";
+              break;
 
-                case 'Two Column Text':
-                    contentWithLayout+="<div class=\"Two-Column-Text row\">
-                                            <div class=\"Two-Column-Text-title col-sm-12\">
-                                                "+element.title+"
-                                            </div>
-                                            <div class=\"col-sm-12 row\">
-                                                <div class=\"contentLeft col-sm-6\">
-                                                    "+element.content+"
-                                                </div>
-                                                <div class=\"contentRight col-sm-6\">
-                                                    "+element.contentright+"
-                                                </div>
-                                            </div>
-                                        </div>";
-                break;
+              case 'Two Column Text':
+                  contentWithLayout+="<div class=\"Two-Column-Text row\">
+                                          <div class=\"Two-Column-Text-title col-sm-12\">
+                                              "+element.title+"
+                                          </div>
+                                          <div class=\"col-sm-12 row\">
+                                              <div class=\"content-Left col-sm-6\">
+                                                  "+element.content+"
+                                              </div>
+                                              <div class=\"content-Right col-sm-6\">
+                                                  "+element.contentright+"
+                                              </div>
+                                          </div>
+                                      </div>";
+              break;
 
-                case 'Image Left':
-                    contentWithLayout+="<div class=\"Image-Left row\">
-                                            <div class=\"Image-Left-image col-sm-6\">
-                                                <img src=\"http://via.placeholder.com/350x150\">
-                                            </div>
-                                            <div class=\"col-sm-6\">
-                                                <div class=\"Image-Left-title\">
-                                                    "+element.title+"
-                                                </div>
-                                                <div class=\"Image-Left-content\">
-                                                    "+element.content+"
-                                                </div>
-                                            </div>
-                                        </div>";
-                break;
+              case 'Image Left':
+                  contentWithLayout+="<div class=\"Image-Left row\">
+                                          <div class=\"Image-Left-image col-sm-6\">
+                                              <img src=\"http://via.placeholder.com/380x220\">
+                                          </div>
+                                          <div class=\"col-sm-6\">
+                                              <div class=\"Image-Left-title\">
+                                                  "+element.title+"
+                                              </div>
+                                              <div class=\"Image-Left-content\">
+                                                  "+element.content+"
+                                              </div>
+                                          </div>
+                                      </div>";
+              break;
 
-                case 'Image Right':
-                    contentWithLayout+="<div class=\"Image-Right row\">
-                                            <div class=\"col-sm-6\">
-                                                <div class=\"Image-Right-title\">
-                                                    "+element.title+"
-                                                </div>
-                                                <div class=\"Image-Right-content\">
-                                                    "+element.content+"
-                                                </div>
-                                            </div>
-                                            <div class=\"Image-Right-image col-sm-6\">
-                                                <img src=\"http://via.placeholder.com/380x220\">
-                                            </div>
-                                        </div>";
-                break;
+              case 'Image Right':
+                  contentWithLayout+="<div class=\"Image-Right row\">
+                                          <div class=\"col-sm-6\">
+                                              <div class=\"Image-Right-title\">
+                                                  "+element.title+"
+                                              </div>
+                                              <div class=\"Image-Right-content\">
+                                                  "+element.content+"
+                                              </div>
+                                          </div>
+                                          <div class=\"Image-Right-image col-sm-6\">
+                                              <img src=\"http://via.placeholder.com/380x220\">
+                                          </div>
+                                      </div>";
+              break;
 
-                case 'Image(s)':
-                    contentWithLayout+="<div class=\"Images row\">
-                                            <div class=\"Images-title col-sm-12\">
-                                                "+element.title+"
-                                            </div>
-                                            <div class=\"Images-image col-sm-12\">
-                                                <img src=\"http://via.placeholder.com/750x200\">
-                                            </div>
-                                            <div class=\"Images-content col-sm-12\">
-                                                "+element.content+"
-                                            </div>
-                                        </div>";
-                break;
+              case 'Images':
+                  contentWithLayout+="<div class=\"Images row\">
+                                          <div class=\"Images-title col-sm-12\">
+                                              "+element.title+"
+                                          </div>
+                                          <div class=\"Images-image col-sm-12\">
+                                              <img src=\"http://via.placeholder.com/750x200\">
+                                          </div>
+                                          <div class=\"Images-content col-sm-12\">
+                                              "+element.content+"
+                                          </div>
+                                      </div>";
+              break;
 
-                case 'Quote':
-                    contentWithLayout+="<div class=\"Quote row\">
-                                        <div class=\"col-sm-1\">
-                                            quote
-                                        </div>
+              case 'Quote':
+                  contentWithLayout+="<div class=\"Quote row\">
+                                        <div class=\"Quotes\">
+                                        <div class=\"Quote-left col-sm-1\"></div>
                                         <div class=\"Quote-content col-sm-10\">
                                             "+element.content+"
                                         </div>
-                                        <div class=\"col-sm-1\">
-                                            quote
-                                        </div>
-                                        <div class=\"Quote-author col-sm-2 pull-right\">
-                                            "+element.title+"
-                                        </div>
-                                        </div>";
-                break;
+                                        <div class=\"Quote-right col-sm-1\"></div>
 
-                case 'Call To Action':
-                    contentWithLayout+="<div class=\"Call-To-Action row\">
+                                        </div>
+                                        <div class=\"Quote-author col-sm-2 col-offset-10 pull-right\">
+                                            "+element.author+"
+                                        </div>
+                                      </div>
+
+                                      ";
+              break;
+
+              case 'Call To Action':
+                  contentWithLayout+="<div class=\"Call-To-Action\">
+                                      <div class=\"borders row\">
                                         <div class=\"col-sm-10\">
                                           <div class=\"Call-To-Action-title col-sm-12\">
                                               "+element.title+"
@@ -575,39 +634,49 @@
                                           </div>
                                         </div>
                                         <div class=\"col-sm-2\">
-                                          <a href=\""+ element.buttonLink+"\" class=\"btn btn-default\">"+ element.buttonValue+"</a>
+                                          <div class=\"callAction\"><a href=\""+ element.buttonLink+"\">"+ element.buttonValue+"</a></div>
                                         </div>
-                                        </div>";
-                break;
+                                      </div>
+                                      </div>";
+              break;
 
-                case 'Content Grid':
-                    contentWithLayout+="<div class=\"Content-Grid row\">
-                                        <div class=\"col-sm-4\">
-                                          <div class=\"Content-Grid-title row\">
+              case 'Content Grid':
+                  contentWithLayout+="<div class=\"Content-Grid row\">
+                                      <div class=\"col-sm-4\">
+                                          <div class=\"Content-Grid-Image-one\">
+                                              <img src=\"http://localhost:8080/documents/20143/0/Tongyeong_0.jpg/0754aa75-5ebd-7e68-5330-22be27cfaff1?t=1502319694563\">
+                                          </div>
+                                          <div class=\"Content-Grid-title-one\">
                                               "+element.title+"
                                           </div>
-                                          <div class=\"Content-Grid-content row\">
+                                          <div class=\"Content-Grid-content-one\">
                                               "+element.content+"
                                           </div>
-                                        </div>
-                                        <div class=\"col-sm-4\">
-                                          <div class=\"Content-Grid-title row\">
-                                              "+element.title+"
+                                      </div>
+                                      <div class=\"col-sm-4\">
+                                          <div class=\"Content-Grid-Image-two\">
+                                              <img src=\"http://localhost:8080/documents/20143/0/Testimonial-3.jpg/7d7c1ea8-969a-bfee-7a9c-42599401db23?t=1502319694536\">
                                           </div>
-                                          <div class=\"Content-Grid-content row\">
-                                              "+element.content+"
+                                          <div class=\"Content-Grid-title-two\">
+                                              "+element.titleTwo+"
                                           </div>
-                                        </div>
-                                        <div class=\"col-sm-4\">
-                                          <div class=\"Content-Grid-title row\">
-                                              "+element.title+"
+                                          <div class=\"Content-Grid-content-two\">
+                                              "+element.contentTwo+"
                                           </div>
-                                          <div class=\"Content-Grid-content row\">
-                                              "+element.content+"
+                                      </div>
+                                      <div class=\"col-sm-4\">
+                                          <div class=\"Content-Grid-Image-three\">
+                                              <img src=\"http://localhost:8080/documents/20143/0/556736.jpg/65605c03-7134-2174-45c9-dca68b7639bd?t=1502319694398\">
                                           </div>
-                                        </div>
-                                        </div>";
-                break;
+                                          <div class=\"Content-Grid-title-three\">
+                                              "+element.titleThree+"
+                                          </div>
+                                          <div class=\"Content-Grid-content-three\">
+                                              "+element.contentThree+"
+                                          </div>
+                                      </div>
+                                      </div>";
+              break;
 
                 default:
                 contentWithLayout+="";
@@ -1095,12 +1164,18 @@
           if(this.props.currentda) {
             let id = this.props.data.id;
             let title = this.props.currentda.title;
-            let content = this.props.currentda.layout.replace(/-/g, ' ') === 'Two Column Text' ? this.props.currentda.contentleft : this.props.currentda.content;
+            let content = this.props.currentda.content;
             let contentright = this.props.currentda.layout.replace(/-/g, ' ') === 'Two Column Text' ? this.props.currentda.contentright : [];
             let buttonValue = this.props.currentda.layout.replace(/-/g, ' ') === 'Call To Action' ? this.props.currentda.buttonValue : [];
             let buttonLink = this.props.currentda.layout.replace(/-/g, ' ') === 'Call To Action' ? this.props.currentda.buttonLink : [];
+            let titleTwo = this.props.currentda.layout.replace(/-/g, ' ') === 'Content Grid' ? this.props.currentda.titleTwo : [];
+            let titleThree = this.props.currentda.layout.replace(/-/g, ' ') === 'Content Grid' ? this.props.currentda.titleThree : [];
+            let contentTwo = this.props.currentda.layout.replace(/-/g, ' ') === 'Content Grid' ? this.props.currentda.contentTwo : [];
+            let contentThree = this.props.currentda.layout.replace(/-/g, ' ') === 'Content Grid' ? this.props.currentda.contentThree : [];
+            let author = this.props.currentda.layout.replace(/-/g, ' ') === 'Quote' ? this.props.currentda.author : [];
 
-            this.setState({ sectionData: {id: id, title: title, content: content, contentright: contentright} });
+
+            this.setState({ sectionData: {id: id, title: title, titleTwo: titleTwo, titleThree: titleThree, content: content, contentright: contentright, contentTwo: contentTwo, contentThree: contentThree, buttonLink: buttonLink, buttonValue: buttonValue, author: author} });
           }
         }
 
@@ -1135,7 +1210,7 @@
                             </div>
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>
-                    { this.props.data.choosen.title !=='Image(s)' &&
+                    { this.props.data.choosen.title !='Quote' &&
                     <ReactBootstrap.Row>
                         <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
                             <div className='input-title'>
@@ -1146,7 +1221,19 @@
                             <input name='title' className='input-style' type='text' value={this.state.sectionData.title} placeholder='Title of article here...' onChange={this.changeInput.bind(this)}/>
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>}
-                    { this.props.data.choosen.title !=='Image(s)' &&
+
+                    { this.props.data.choosen.title ==='Quote' &&
+                    <ReactBootstrap.Row>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <div className='input-title'>
+                                Author
+                            </div>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <input name='author' className='input-style' type='text' value={this.state.sectionData.author} placeholder='author here...' onChange={this.changeInput.bind(this)}/>
+                        </ReactBootstrap.Col>
+                    </ReactBootstrap.Row>}
+
                     <ReactBootstrap.Row>
                         <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
                             <div className='input-title'>
@@ -1156,7 +1243,7 @@
                         <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
                             <textarea name='content' className='section-content' value={this.state.sectionData.content} type='text' placeholder='Your content goes here...' onChange={this.changeInput.bind(this)}/>
                         </ReactBootstrap.Col>
-                    </ReactBootstrap.Row>}
+                    </ReactBootstrap.Row>
 
                     { this.props.data.choosen.title ==='Call To Action' &&
                     <ReactBootstrap.Row>
@@ -1179,6 +1266,7 @@
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>}
 
+
                     { this.props.data.choosen.title ==='Two Column Text' &&
                     <ReactBootstrap.Row>
                         <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
@@ -1188,6 +1276,43 @@
                         </ReactBootstrap.Col>
                         <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
                             <textarea name='contentright' className='section-content' value={this.state.sectionData.contentright} type='text' placeholder='Your content goes here...' onChange={this.changeInput.bind(this)}/>
+                        </ReactBootstrap.Col>
+                    </ReactBootstrap.Row>}
+
+                    { this.props.data.choosen.title ==='Content Grid' &&
+                    <ReactBootstrap.Row>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <div className='input-title'>
+                                Title Two
+                            </div>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <input name='titleTwo' className='input-style' type='text' value={this.state.sectionData.titleTwo} placeholder='Title two of article here...' onChange={this.changeInput.bind(this)}/>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <div className='input-title'>
+                                Content Two
+                            </div>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <textarea name='contentTwo' className='section-content' value={this.state.sectionData.contentTwo} type='text' placeholder='Your content goes here...' onChange={this.changeInput.bind(this)}/>
+                        </ReactBootstrap.Col>
+
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <div className='input-title'>
+                                Title Three
+                            </div>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <input name='titleThree' className='input-style' type='text' value={this.state.sectionData.titleThree} placeholder='Title two of article here...' onChange={this.changeInput.bind(this)}/>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <div className='input-title'>
+                                Content Three
+                            </div>
+                        </ReactBootstrap.Col>
+                        <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
+                            <textarea name='contentThree' className='section-content' value={this.state.sectionData.contentThree} type='text' placeholder='Your content goes here...' onChange={this.changeInput.bind(this)}/>
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>}
 

@@ -5,7 +5,7 @@
 
 <style type="text/css">
     .Title-Text, .Two-Column-Text, .Image-Right, .Image-Left, .Images, .Call-To-Action, .Content-Grid, .Quote {
-      margin: 25px 0;
+        margin: 25px 0;
     }
     .Title-Text-title, .Two-Column-Text-title, .Image-Right-title, .Image-Left-title, .Images-title, .Call-To-Action-title, .Content-Grid-title-one, .Content-Grid-title-two, .Content-Grid-title-three {
         font-family: Montserrat;
@@ -13,66 +13,66 @@
         color: #ca1323;
         margin-bottom: 0.5rem;
     }
-    .Two-Column-Text-content, .Title-Text-content, .Quote-content {
+    .content-Left, .content-Right, .Title-Text-content, .Quote-content, .Image-Right-content, .Image-Left-content, .Images-content, .Call-To-Action-content, .Content-Grid-content-one, .Content-Grid-content-two, .Content-Grid-content-three  {
         font-family: Montserrat;
         font-size: 14px;
         font-weight: 300;
         color: #343441;
     }
     .Content-Grid-Image-one img, .Content-Grid-Image-two img, .Content-Grid-Image-three img {
-      width: 100%;
-      padding: 25px;
+        width: 100%;
+        padding: 25px;
+        border-radius: 5px;
     }
     .Quotes {
-      display: flex;
+        display: flex;
     }
     .Quote-left {
-      background-image: url('http://localhost:8080/documents/20143/0/page-1.svg/2ca151f3-5192-beba-175a-422783126f84');
-      background-repeat: no-repeat;
-      background-position: top right;
-      flex: 1;
+        background-image: url('http://localhost:8080/documents/20143/0/page-1.svg/2ca151f3-5192-beba-175a-422783126f84');
+        background-repeat: no-repeat;
+        background-position: top right;
+        flex: 1;
     }
     .Quote-right {
-      background-image: url('http://localhost:8080/documents/20143/0/page-1-copy-2.svg/f3e0a24c-700f-67b7-d284-7aa6795d2353');
-      background-repeat: no-repeat;
-      background-position: bottom left;
-      flex: 1;
+        background-image: url('http://localhost:8080/documents/20143/0/page-1-copy-2.svg/f3e0a24c-700f-67b7-d284-7aa6795d2353');
+        background-repeat: no-repeat;
+        background-position: bottom left;
+        flex: 1;
     }
     .Content-Grid-title-one, .Content-Grid-title-two, .Content-Grid-title-three, .Content-Grid-content-one, .Content-Grid-content-two, .Content-Grid-content-three  {
-      padding-left: 25px;
+        padding-left: 25px;
     }
     .Image-Right img, .Image-Left img, .Images img {
-      border-radius: 5px;
-      height: 220px;
-      width: 100%;
+        border-radius: 5px;
+        height: 220px;
+        width: 100%;
     }
     .Call-To-Action {
-      margin: 20px;
+        margin: 20px;
     }
     .borders {
-    	border-radius: 5px;
-    	border: solid 1px #ca1323;
-      margin-left: 15px;
-      margin-right: 15px;
-      padding: 15px;
+      	border-radius: 5px;
+      	border: solid 1px #ca1323;
+        margin-left: 15px;
+        margin-right: 15px;
+        padding: 15px;
     }
     .callAction {
-      min-width: 127px;
-    	height: 32px;
-    	border-radius: 100px;
-    	background-color: #ca1323;
-    	font-family: Montserrat;
-    	font-size: 12px;
-    	font-weight: 500;
-      padding-top: 8px;
-      text-align: center;
-      cursor: pointer;
+        min-width: 127px;
+      	height: 32px;
+      	border-radius: 100px;
+      	background-color: #ca1323;
+      	font-family: Montserrat;
+      	font-size: 12px;
+      	font-weight: 500;
+        padding-top: 8px;
+        text-align: center;
+        cursor: pointer;
     }
     .callAction a, .callAction a:hover  {
-      color: #ffffff;
-      text-decoration: none;
+        color: #ffffff;
+        text-decoration: none;
     }
-
 
     #popup {
         width: 100%;
@@ -506,11 +506,18 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" >
+<link rel="stylesheet" href="http://localhost:8080/documents/20143/0/redactor.css/175464bb-7b3c-0c2b-325d-39926f07efe2" />
+
 <script>
     define._amd = define.amd;
     define.amd = false;
 </script>
-
+<script
+  type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="http://localhost:8080/documents/20143/0/redactor.js/5f07fd90-fe55-9e43-7cd2-091395a2e06f"></script>
+<script type="text/javascript" src="http://localhost:8080/documents/20143/0/source.js/3ce60909-2145-4388-c27a-4149a779d8bf"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
@@ -518,6 +525,36 @@
 
 <script>
     define.amd = define._amd;
+</script>
+
+<script type="text/javascript">
+(function($)
+{
+$.Redactor.prototype.advanced = function()
+{
+    return {
+        init: function ()
+        {
+            var button = this.button.add('advanced', 'Advanced');
+            this.button.addCallback(button, this.advanced.test);
+        },
+        test: function(buttonName)
+        {
+            alert(buttonName);
+        }
+    };
+};
+})(jQuery);
+
+$(function()
+{
+    $("#redactor-id0").redactor({
+        plugins: ['source']
+    });
+    $("#redactor-id1").redactor({
+        plugins: ['source']
+    });
+});
 </script>
 
 <script type='text/babel'>
@@ -1167,6 +1204,7 @@
             this.props.removeContent();
         }
 
+
         changeInput(event) {
             this.state.sectionData[event.target.name] = event.target.value;
             this.state.sectionData['layout'] = this.props.data.choosen.title;
@@ -1221,7 +1259,7 @@
                             </div>
                         </ReactBootstrap.Col>
                         <ReactBootstrap.Col xsOffset={2} xs={8} xsOffset={2}>
-                            <textarea name='content' className='section-content' value={this.state.sectionData.content} type='text' placeholder='Your content goes here...' onChange={this.changeInput.bind(this)}/>
+                            <textarea id={'redactor-' + this.props.data.id} name='content' className='section-content' value={this.state.sectionData.content} type='text' placeholder='Your content goes here...' onChange={this.changeInput.bind(this)}/>
                         </ReactBootstrap.Col>
                     </ReactBootstrap.Row>
 
